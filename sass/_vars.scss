@@ -42,9 +42,9 @@ $sky-blue: #3768B1;
 $deco-green: #C2D98C;
 $growing-green: #87BE42;
 $gray: #8D8D8D;
-$ice-to-catskill: linear-gradient(to right, $ice-white, $catskill-white);
-$peach-to-sunrise: linear-gradient(to right, $peach-yellow, $sunrise-yellow);
-$sky-to-deep-blue: linear-gradient(to right, $sky-blue, $deep-blue);
+$ice-to-catskill: linear-gradient(to bottom, $ice-white, $catskill-white);
+$peach-to-sunrise: linear-gradient(to bottom, $peach-yellow, $sunrise-yellow);
+$sky-to-deep-blue: linear-gradient(to bottom, $sky-blue, $deep-blue);
 
 // breakpoints
 $laptop: 1440px;
@@ -57,3 +57,4 @@ $mobile: 520px;
 $transition-time: .3s;
 $border-radius: 24px;
 $border-radius-small: 12px;
+$box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.10);

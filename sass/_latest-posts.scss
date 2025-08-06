@@ -1,17 +1,77 @@
 .latest-posts {
+  position: relative;
+
+  &:before {
+    content: '';
+    height: 60%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: $ice-to-catskill;
+  }
+
   &__inner {
     &__header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 50px;
+      span {
+        margin: 0;
+      }
     }
   }
 
   &__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 40px;
+    overflow-x: visible;
+    width: 100vw;
+    padding-bottom: 130px;
+    position: unset;
 
+    .slick-arrow {
+      position: absolute;
+      bottom: 45px;
+      height: 45px;
+      width: 45px;
+      appearance: none;
+      border: none;
+      border-radius: 45px;
+      background-color: $white;
+      box-shadow: $box-shadow;
+      cursor: pointer;
+      background-repeat: no-repeat;
+      background-size: 21px 13px;
+      background-position: center;
+      transition: opacity $transition-time ease;
+      opacity: 1;
+
+      &.slick-disabled {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      span {
+        display: none;
+      }
+
+      &.slick-next {
+        right: 0;
+        background-image: url('static/images/next-arrow.png');
+      }
+
+      &.slick-prev {
+        left: 0;
+        background-image: url('static/images/prev-arrow.png');
+      }
+    }
+
+    .slick-slide {
+      > div {
+        margin-right: 30px;
+      }
+
+    }
   }
 }
 
@@ -65,8 +125,7 @@
     padding: 24px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-
+    width: 100%;
 
     &__date {
       font-size: 0.875rem;
@@ -100,21 +159,32 @@
     }
 
     &__link {
-      margin-top: 24px;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #1a2a5a;
-      text-decoration: none;
+      margin-top: 23px;
+      color: $deep-blue;
       display: inline-flex;
+      align-items: center;
       gap: 6px;
+      font-size: 1.125rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: -0.01125rem;
+      text-decoration: none;
+      transition: gap $transition-time ease;
 
       &:hover {
-        text-decoration: underline;
+        text-decoration: none;
+        gap: 10px;
       }
 
       &::after {
-        content: '→';
-        font-size: 1rem;
+        content: '';
+        height: 13px;
+        width: 21px;
+        background-repeat: no-repeat;
+        background-size: 21px 13px;
+        background-position: center;
+        background-image: url('static/images/next-arrow.png');
       }
     }
   }

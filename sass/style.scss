@@ -10,6 +10,7 @@ Version: 1.0.0
 // libs
 @import 'normalize';
 @import 'vars';
+@import 'slick';
 
 @media (min-width: $tablet-small) {
   @import 'aos';

@@ -15,6 +15,7 @@
     align-items: center;
     justify-content: center;
     border: 2px solid $white;
+    flex-direction: column;
 
     &__text {
       * {
@@ -29,6 +30,15 @@
     }
 
     &__form {
+    }
+    &__disclaimer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: flex-start;
+      * {
+        color: $white;
+      }
     }
   }
 }

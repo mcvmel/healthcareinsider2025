@@ -18,6 +18,10 @@ $form_shortcode = get_sub_field('form_shortcode');
                     <?php echo do_shortcode($form_shortcode); ?>
                 </div>
             <?php endif; ?>
+            <div class="insurance-by-state__inner__disclaimer">
+                <p class="small-note">You will be taken to</p> <img src="<?php echo get_template_directory_uri(); ?>/static/images/healthcaredotcomlogowhite.png" alt="Healthcare.com" style="display: inline-block; margin: 0; max-height: 20px;
+ width: auto;"> <p class="small-note">to finish your submission.</p>
+            </div>
         </div>
     </div>
 </section>

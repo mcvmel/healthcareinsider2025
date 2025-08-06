@@ -143,10 +143,40 @@ function healthcareinsider2025_remove_admin_bump()
     remove_action('wp_head', '_admin_bar_bump_cb');
 }
 
+function custom_trim_excerpt_by_chars($excerpt) {
+    $char_limit = 80;
+
+    $excerpt = strip_tags($excerpt); // remove any HTML
+    if (strlen($excerpt) > $char_limit) {
+        $excerpt = substr($excerpt, 0, $char_limit);
+        $excerpt = rtrim($excerpt, " \t\n\r\0\x0B.,!?"); // clean up trailing punctuation
+        $excerpt .= '…'; // append ellipsis
+    }
+
+    return $excerpt;
+}
+add_filter('get_the_excerpt', 'custom_trim_excerpt_by_chars');
+
 /**
  * Enqueue scripts and styles.
  */
 function healthcareinsider2025_scripts() {
+
+    wp_dequeue_style( 'wp-block-library' );
+    wp_dequeue_style( 'wp-block-library-theme' );
+    wp_dequeue_style( 'global-styles' );
+    wp_dequeue_style('dashicons');
+    wp_deregister_script('wp-polyfill-dom-rect');
+
+    wp_deregister_script('wp-polyfill-element-closest');
+    wp_deregister_script('wp-polyfill-fetch');
+    wp_deregister_script('wp-polyfill-formdata');
+    wp_deregister_script('wp-polyfill-node-contains');
+    wp_deregister_script('wp-polyfill-object-fit');
+    wp_deregister_script('wp-polyfill-url');
+    wp_deregister_script('regenerator-runtime');
+
+
 	wp_enqueue_style( 'healthcareinsider2025-style', get_stylesheet_uri(), array(), HCI_VERSION );
 	wp_style_add_data( 'healthcareinsider2025-style', 'rtl', 'replace' );
 
@@ -155,6 +185,9 @@ function healthcareinsider2025_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+    wp_enqueue_script( 'healthcareinsider2025-mainjs', get_template_directory_uri() . '/js/main.min.js', array('jquery'), HCI_VERSION, true );
+
 }
 add_action( 'wp_enqueue_scripts', 'healthcareinsider2025_scripts' );
 

@@ -3,7 +3,7 @@
 .white-card {
   border-radius: $border-radius;
   background: $white;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.10);
+  box-shadow: $box-shadow;
   transition: all $transition-time ease;
   &:hover {
     background-color: $ice-white;
