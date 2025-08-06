@@ -1,0 +1,51 @@
+.categories-grid {
+  &__inner {
+    &__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+
+      &__item {
+        flex: 1 1 calc((100% - 120px) / 4); // 4 items per row with 40px gap x 3
+        max-width: calc((100% - 120px) / 4);
+
+
+        &__icon {
+          height: 70px;
+          width: 70px;
+          background-color: $catskill-white;
+          border-radius: 70px;
+          display: block;
+          margin: 0 auto 20px;
+        }
+
+        &__name {
+          display: block;
+          font-family: $primary-font;
+          color: $deep-blue;
+          text-decoration: none;
+          font-size: 1.375rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 1.5rem;
+        }
+
+        a {
+          display: block;
+          text-align: center;
+          padding: 30px;
+          min-height: 160px;
+          text-decoration: none;
+
+          * {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}

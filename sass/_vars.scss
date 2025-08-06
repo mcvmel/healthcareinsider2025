@@ -1,0 +1,59 @@
+// fonts & colors
+@font-face {
+  font-family: 'Poppins Bold';
+  src: url('static/fonts/poppins-bold-webfont.woff2') format('woff2'),
+  url('static/fonts/poppins-bold-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins Medium';
+  src: url('static/fonts/poppins-medium-webfont.woff2') format('woff2'),
+  url('static/fonts/poppins-medium-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/static/fonts/DMSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+$primary-font: 'Poppins Bold', sans-serif;
+$primary-font-medium: 'Poppins Medium', sans-serif;
+$secondary-font: 'DM Sans', sans-serif;
+
+// Colors
+$white: #ffffff;
+$catskill-white: #DDEAEE;
+$deep-blue: #2A2F60;
+$sunrise-yellow: #F5A500;
+$ice-white: #F7FCFE;
+$peach-yellow: #ffe0aa;
+$sky-blue: #3768B1;
+$deco-green: #C2D98C;
+$growing-green: #87BE42;
+$gray: #8D8D8D;
+$ice-to-catskill: linear-gradient(to right, $ice-white, $catskill-white);
+$peach-to-sunrise: linear-gradient(to right, $peach-yellow, $sunrise-yellow);
+$sky-to-deep-blue: linear-gradient(to right, $sky-blue, $deep-blue);
+
+// breakpoints
+$laptop: 1440px;
+$ipad-pro: 1366px;
+$tablet-large: 1024px;
+$tablet-small: 768px;
+$mobile: 520px;
+
+//misc
+$transition-time: .3s;
+$border-radius: 24px;
+$border-radius-small: 12px;

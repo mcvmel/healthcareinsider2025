@@ -25,35 +25,45 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'healthcareinsider2025' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$healthcareinsider2025_description = get_bloginfo( 'description', 'display' );
-			if ( $healthcareinsider2025_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $healthcareinsider2025_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+	<header class="site-header">
+		<div class="site-header__utility">
+			<div class="container site-header__utility__inner">
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'healthcareinsider2025' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+				<div class="site-header__utility__phone">
+					<img src="<?php echo get_template_directory_uri(); ?>/static/images/icon-phone.svg" alt="Phone Icon" class="site-header__utility__icon">
+					<a href="tel:8558104988">855–810–4988</a>
+				</div>
+
+				<button class="site-header__utility__search" aria-label="Search">
+					<img src="<?php echo get_template_directory_uri(); ?>/static/images/icon-search.svg" alt="Search Icon" class="site-header__utility__icon">
+					Search
+				</button>
+
+			</div>
+		</div>
+
+		<div class="site-header__main">
+			<div class="container site-header__main__inner">
+
+				<div class="site-header__main__logo">
+					<a href="<?php echo esc_url(home_url('/')); ?>">
+						<img src="<?php echo get_template_directory_uri(); ?>/static/images/healthcareinsider-logo.png" alt="Healthcare Insider">
+					</a>
+				</div>
+
+				<nav class="site-header__main__nav" role="navigation">
+					<?php
+					wp_nav_menu([
+						'theme_location'  => 'primary',
+						'container'       => 'div',
+						'container_class' => 'site-header__main__menu',
+						'menu_class'      => 'site-header__main__menu__list',
+						'fallback_cb'     => false,
+					]);
+					?>
+				</nav>
+
+			</div>
+		</div>
+	</header>
+

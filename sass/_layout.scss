@@ -1,0 +1,19 @@
+// layout
+
+#wpadminbar {
+  opacity: 0;
+  transition: opacity $transition-time ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.container {
+  width: 1352px;
+  margin: 0 auto;
+}
+
+section + section {
+  margin-top: 80px;
+}

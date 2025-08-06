@@ -1,0 +1,32 @@
+// layout
+
+.white-card {
+  border-radius: $border-radius;
+  background: $white;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.10);
+  transition: all $transition-time ease;
+  &:hover {
+    background-color: $ice-white;
+  }
+}
+
+.btn-container {
+  display: flex;
+  margin-top: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  border-radius: 6.25rem;
+  background: $sky-blue;
+  display: inline-block;
+  line-height: 1;
+  padding: 20px 30px;
+  color: $white;
+  font-family: $primary-font-medium;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none;
+}

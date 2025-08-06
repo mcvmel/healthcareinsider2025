@@ -1,0 +1,86 @@
+.insurer-review {
+  position: relative;
+  height: 611px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    max-width: 820px;
+    margin: 0 auto;
+    z-index: 2;
+    position: relative;
+
+    &__text {
+      p {
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%; /* 1.8rem */
+      }
+    }
+
+  }
+
+  &__logos {
+    z-index: 1;
+    position: absolute;
+    height: 100%;
+    width: 1392px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .white-card {
+      position: absolute;
+
+      &:nth-child(1) {
+        top: 30px;
+        left: 30px;
+      }
+
+      &:nth-child(2) {
+        top: 0;
+        right: 100px;
+        transform: scale(.9);
+      }
+
+      &:nth-child(3) {
+        top: 40%;
+        left: 0;
+        transform: scale(.6);
+      }
+
+      &:nth-child(4) {
+        top: 44%;
+        right: 0;
+        transform: scale(.64);
+      }
+
+      &:nth-child(5) {
+        bottom: 0;
+        left: 80px;
+        transform: scale(.8);
+      }
+
+      &:nth-child(6) {
+        bottom: 0;
+        right: 30px;
+      }
+    }
+
+    &__logo {
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 160px;
+      min-width: 308px;
+
+      img {
+        max-width: 206px;
+        height: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+html {
+  font-size: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-size: 1rem;
+  font-family: $secondary-font;
+  color: $deep-blue;
+}
+
+p {
+  font-family: $secondary-font;
+  font-size: 1.125rem;
+  line-height: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  margin: 0 0 1.5rem 0;
+
+  @media (max-width: $tablet-large) {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+
+  a {
+    color: inherit;
+  }
+}
+
+h1 {
+  font-family: $primary-font;
+  font-weight: 400;
+  font-size: 3.625rem;
+  line-height: 4.375rem;
+  letter-spacing: -0.03625rem;
+  margin: 0 0 1.875rem 0;
+  text-transform: none;
+  color: $deep-blue;
+
+  @media (max-width: $tablet-large) {
+    font-size: 2.75rem;
+    line-height: 3.25rem;
+  }
+
+  @media (max-width: $mobile) {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+
+h2, h3, h4, h5, h6,
+.h2, .h3, .h4, .h5, .h6 {
+  font-family: $primary-font;
+  font-weight: 400;
+  font-size: 2.875rem;
+  line-height: 3.125rem;
+  letter-spacing: -0.02875rem;
+  color: $deep-blue;
+  margin: 0 0 1.5rem 0;
+
+  a {
+    color: inherit;
+  }
+
+  @media (max-width: $tablet-large) {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+  }
+
+  @media (max-width: $mobile) {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+  }
+}
+
+strong, b {
+  font-weight: 700;
+}

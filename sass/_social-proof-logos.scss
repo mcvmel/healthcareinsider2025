@@ -1,0 +1,47 @@
+.social-proof {
+  &__inner {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    align-items: center;
+    margin-left: 60px;
+    margin-right: 60px;
+
+    &__label {
+      font-family: $secondary-font;
+      text-align: left;
+      text-transform: uppercase;
+      color: $gray;
+      margin: 0;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 2.125rem; /* 212.5% */
+      letter-spacing: 0.02rem;
+
+    }
+
+    &__logos {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+
+      &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 160px;
+
+        img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+        }
+      }
+    }
+  }
+}
+

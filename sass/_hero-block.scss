@@ -1,0 +1,38 @@
+.hero-block {
+
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 4fr 8fr;
+    align-items: center;
+    grid-gap: 80px;
+
+    &__left {
+      &__image {
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+    &__right {
+      &__text {
+        h1 {
+
+        }
+        p {
+          font-size: 1.5rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 120%; /* 1.8rem */
+        }
+      }
+
+      &__form {
+      }
+    }
+  }
+
+}

@@ -7,9 +7,9 @@
  * @package healthcareinsider2025
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
+if ( ! defined( 'HCI_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define( 'HCI_VERSION', '1.0.0' );
 }
 
 /**
@@ -49,7 +49,7 @@ function healthcareinsider2025_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'healthcareinsider2025' ),
+			'primary' => esc_html__( 'Primary', 'healthcareinsider2025' ),
 		)
 	);
 
@@ -134,14 +134,23 @@ function healthcareinsider2025_widgets_init() {
 }
 add_action( 'widgets_init', 'healthcareinsider2025_widgets_init' );
 
+
+// remove admin bar bump
+add_action('get_header', 'healthcareinsider2025_remove_admin_bump');
+
+function healthcareinsider2025_remove_admin_bump()
+{
+    remove_action('wp_head', '_admin_bar_bump_cb');
+}
+
 /**
  * Enqueue scripts and styles.
  */
 function healthcareinsider2025_scripts() {
-	wp_enqueue_style( 'healthcareinsider2025-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'healthcareinsider2025-style', get_stylesheet_uri(), array(), HCI_VERSION );
 	wp_style_add_data( 'healthcareinsider2025-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'healthcareinsider2025-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'healthcareinsider2025-navigation', get_template_directory_uri() . '/js/navigation.js', array(), HCI_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

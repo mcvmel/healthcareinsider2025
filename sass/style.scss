@@ -1,0 +1,29 @@
+/*!
+Theme Name: Health Care Insider 2025
+Theme URI: https://healthcareinsider.com/
+Author: Promotion Agents
+Author URI: https://promotionagents.com/
+Description: Custom Responsive accessible theme for Health Care Insider.
+Version: 1.0.0
+*/
+
+// libs
+@import 'normalize';
+@import 'vars';
+
+@media (min-width: $tablet-small) {
+  @import 'aos';
+}
+
+
+// common
+@import 'typography';
+@import 'common';
+@import 'layout';
+@import 'header';
+@import 'hero-block';
+@import 'categories-grid';
+@import 'social-proof-logos';
+@import 'insurer-review-web';
+@import 'insurance-by-state';
+@import 'latest-posts';
