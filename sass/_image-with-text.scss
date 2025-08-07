@@ -1,0 +1,39 @@
+.image-with-text {
+  &--left {
+    .image-with-text__inner {
+      grid-template-columns: 5fr 7fr;
+    }
+  }
+
+  &--right {
+    .image-with-text__inner {
+      grid-template-columns: 5fr 7fr;
+      direction: rtl;
+      grid-auto-flow: dense;
+
+      .image-with-text__inner__content {
+        text-align: left;
+
+        * {
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  &__inner {
+    display: grid;
+    grid-gap: 40px;
+    align-items: center;
+
+    &__image {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &__content {
+    }
+  }
+}

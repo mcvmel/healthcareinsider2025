@@ -41,36 +41,17 @@ get_header();
                     get_template_part('template-parts/latest-posts');
 
                 // Case: CTA Block
-                elseif (get_row_layout() == 'expanders'):
-                    get_template_part('template-parts/expander');
-
-                // Case: Testimonials
-                elseif (get_row_layout() == 'testimonials'):
-                    get_template_part('template-parts/testimonials');
-
-                // Case: Blog Posts
-                elseif (get_row_layout() == 'blog_posts'):
-                    get_template_part('template-parts/blog-posts');
-
-                // Case: Page Hero
-                elseif (get_row_layout() == 'page_hero'):
-                    get_template_part('template-parts/page-hero');
-
-                // Case: Image with Text
                 elseif (get_row_layout() == 'image_with_text'):
                     get_template_part('template-parts/image-with-text');
 
-                // Case: Gallery
-                elseif (get_row_layout() == 'gallery'):
-                    get_template_part('template-parts/gallery');
+                // Case: Testimonials
+                elseif (get_row_layout() == 'author_callout'):
+                    get_template_part('template-parts/author-callout');
 
-                // Case: Simple Text
-                elseif (get_row_layout() == 'simple_text'):
-                    get_template_part('template-parts/simple-text');
 
-                // Case: Contact Form
-                elseif (get_row_layout() == 'contact_form'):
-                    get_template_part('template-parts/contact-form');
+
+
+
 
                 // Case: Links
                 elseif (get_row_layout() == 'links'):

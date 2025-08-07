@@ -86,3 +86,12 @@ strong, b {
   letter-spacing: -0.00875rem;
   margin: 0;
 }
+
+
+.small-heading {
+  font-family: $primary-font-medium;
+  font-size: 1.375rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5rem; /* 109.091% */
+}

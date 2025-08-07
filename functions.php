@@ -50,6 +50,9 @@ function healthcareinsider2025_setup() {
 	register_nav_menus(
 		array(
 			'primary' => esc_html__( 'Primary', 'healthcareinsider2025' ),
+            'footer_1'  => 'Footer 1',
+            'footer_2'  => 'Footer 2',
+            'footer_3'  => 'Footer 3',
 		)
 	);
 

@@ -1,0 +1,195 @@
+.email-cta {
+  padding-top: 80px;
+  position: relative;
+
+  &__inner {
+    position: relative;
+    padding: 48px;
+    border-radius: $border-radius;
+    background: $peach-to-sunrise;
+    border: 2px solid $white;
+
+    &:after {
+      position: absolute;
+      content: '';
+      width: 50%;
+      top: -80px;
+      right: 0;
+      height: calc(100% + 80px);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url('static/images/happy-family-compressed.png');
+      background-position: top center;
+    }
+
+    &__left {
+      max-width: 640px;
+      width: 100%;
+
+      &__text {
+      }
+
+      &__form {
+        min-height: 340px;
+      }
+
+      &__disclaimer {
+      }
+    }
+
+  }
+}
+
+.footer {
+  background-color: $deep-blue;
+  padding: 80px 0;
+
+  * {
+    color: $white;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: space-between;
+
+    &__logo {
+      img {
+        max-width: 280px;
+        height: auto;
+      }
+    }
+
+    &__utility {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-gap: 30px;
+
+      &__phone {
+        a {
+          font-family: $secondary-font;
+          font-size: 1rem;
+          color: $white;
+          text-decoration: none;
+        }
+      }
+
+      &__search {
+        background: none;
+        border: none;
+        font-family: $secondary-font;
+        font-size: 1rem;
+        color: $white;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      &__social {
+        display: flex;
+        flex-direction: row;
+        grid-gap: 15px;
+
+        a {
+          display: inline-block;
+          text-decoration: none;
+
+          img {
+            max-height: 24px;
+            height: 24px;
+          }
+        }
+      }
+    }
+  }
+
+  &__navigation {
+    display: grid;
+    grid-template-columns: 400px auto auto;
+    justify-content: space-between;
+    margin: 80px 0;
+
+    &__col {
+      &__title {
+        font-family: $primary-font-medium;
+        font-size: 1.375rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.5rem;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+
+        &.footer-1,
+        &.footer-3 {
+          display: grid;
+          grid-template-columns: minmax(0px, 200px) max-content;
+
+          grid-gap: 30px;
+        }
+
+        li {
+          list-style: none;
+          margin: 0 0 15px;
+
+          a {
+            text-decoration: none;
+            font-size: 1.125rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: -0.01125rem;
+          }
+        }
+      }
+    }
+  }
+
+  &__legal {
+    display: grid;
+    grid-template-columns: auto auto;
+    &__links {
+      p {
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%; /* 1.35rem */
+        letter-spacing: -0.01125rem;
+      }
+    }
+
+    &__copyright {
+      text-align: right;
+      p {
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%; /* 1.35rem */
+        letter-spacing: -0.01125rem;
+      }
+    }
+  }
+
+  &__disclaimer {
+    margin-top: 80px;
+    border-top: 1px solid $white;
+    padding-top: 80px;
+
+    p {
+      font-size: 0.875rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 120%; /* 1.05rem */
+      letter-spacing: -0.00875rem;
+    }
+  }
+}
