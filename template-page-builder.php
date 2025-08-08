@@ -48,6 +48,10 @@ get_header();
                 elseif (get_row_layout() == 'author_callout'):
                     get_template_part('template-parts/author-callout');
 
+                // Case: Health Insurance State Directory
+                elseif (get_row_layout() == 'health_insurance_state_directory'):
+                    get_template_part('template-parts/health-insurance-state-directory');
+
 
 
 

@@ -1,0 +1,259 @@
+.filter-reviews-container {
+  background: $ice-to-catskill;
+}
+
+.filter-reviews {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  grid-gap: 75px;
+  position: relative;
+  padding: 80px 0;
+
+  &__filter {
+    position: sticky;
+    top: 40px;
+    height: 550px;
+
+
+    .simplebar-content {
+      @media (max-width: $mobile) {
+        padding: 20px !important;
+      }
+    }
+
+    .simplebar-scrollbar::before {
+      background-color: $deep-blue;
+      opacity: 1;
+      border-radius: 3px;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .simplebar-track.simplebar-vertical {
+      top: 10px;
+      width: 6px;
+      border-radius: 0;
+      right: auto;
+      left: 0;
+      background-color: $catskill-white;
+    }
+
+
+    &__ul {
+      margin: 40px 0 0;
+      padding: 0 0 0 30px;
+      height: 380px;
+      overflow-y: scroll;
+
+      li {
+        list-style: none;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        padding: 10px 0;
+        margin: 0 0 10px;
+        cursor: pointer;
+
+        &.active {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  &__insurer-reviews {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 60px;
+
+    &__item {
+      padding: 40px 75px;
+      display: grid;
+      grid-gap: 40px;
+      grid-template-columns: 214px auto;
+
+      &__left {
+        text-align: center;
+
+        &__image {
+          overflow: hidden;
+          height: 214px;
+          width: 214px;
+          border-radius: $border-radius;
+          border: 2px solid $catskill-white;
+          position: relative;
+          background-color: $white;
+
+          img {
+            width: 90%;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+
+        &__rating {
+          margin: 24px 0;
+
+          p {
+            margin: 0 0 10px 0;
+          }
+        }
+
+        .btn {
+        }
+      }
+
+      &__right {
+        &__title {
+        }
+
+        &__excerpt {
+        }
+      }
+
+      &.hide {
+        display: none;
+      }
+    }
+
+
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .page-numbers {
+    padding: 10px;
+    font-size: 1.375rem;
+    font-style: normal;
+    line-height: 1.5rem;
+    color: $deep-blue;
+    text-decoration: none;
+    font-weight: bold;
+
+    &.current {
+      color: $sky-blue;
+    }
+
+    &.next, &.prev {
+      height: 45px;
+      width: 45px;
+      appearance: none;
+      border: none;
+      border-radius: 45px;
+      background-color: $white;
+      box-shadow: $box-shadow;
+      cursor: pointer;
+      background-repeat: no-repeat;
+      background-size: 21px 13px;
+      background-position: center;
+      transition: opacity $transition-time ease;
+      opacity: 1;
+    }
+
+    &.next {
+      background-image: url('static/images/next-arrow.png');
+    }
+
+    &.prev {
+      background-image: url('static/images/prev-arrow.png');
+    }
+  }
+}
+
+.state-filter-flyout {
+  z-index: 1;
+  position: fixed;
+  height: 100vh;
+  width: 354px;
+  top: 0;
+  left: -50vw;
+  overflow-y: scroll;
+  box-shadow: $box-shadow;
+  background: rgba($white, .9);
+  padding: 40px 40px 140px;
+  transition: left .5s ease;
+
+  &.open {
+    left: 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 40px;
+
+    span {
+      margin: 4px 0 0;
+    }
+
+    button {
+      background-image: url('static/images/icon-close.png');
+      height: 30px;
+      width: 30px;
+      background-size: 20px 20px;
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      appearance: none;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style: none;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1;
+      cursor: pointer;
+      margin: 0 0 30px 0;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+
+      &:before {
+        border: 2px solid $deep-blue;
+        display: block;
+        height: 20px;
+        width: 20px;
+        content: '';
+      }
+
+      &:after {
+        position: absolute;
+        content: '';
+        height: 16px;
+        width: 16px;
+        background-color: $sky-blue;
+        top: 4px;
+        left: 4px;
+        opacity: 0;
+        transition: opacity $transition-time ease;
+      }
+
+      &.active {
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

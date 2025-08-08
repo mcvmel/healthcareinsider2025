@@ -11,6 +11,7 @@ Version: 1.0.0
 @import 'normalize';
 @import 'vars';
 @import 'slick';
+@import 'simplebar';
 
 @media (min-width: $tablet-small) {
   @import 'aos';
@@ -30,6 +31,9 @@ Version: 1.0.0
 @import 'latest-posts';
 @import 'image-with-text';
 @import 'author-callout';
+@import 'health-insurance-state-directory';
+@import 'insurer-reviews';
+
 
 
 

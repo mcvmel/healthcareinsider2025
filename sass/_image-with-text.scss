@@ -13,6 +13,14 @@
 
       .image-with-text__inner__content {
         text-align: left;
+        direction: ltr;
+
+        ol, ul {
+          margin: 40px;
+          li {
+            margin: 0 0 15px 0;
+          }
+        }
 
         * {
           text-align: left;

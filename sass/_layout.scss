@@ -18,3 +18,21 @@
 section + section {
   margin-top: 80px;
 }
+
+.ice-swoop {
+  position: relative;
+  &:before {
+    top: 0;
+    right:0;
+    background-position: bottom right;
+    background-size: contain;
+    content: '';
+    height: 140%;
+    width: 100%;
+    background-color: $white;
+    background-image: url('static/images/ice-white-swoop.png');
+    display: block;
+    position: absolute;
+    background-repeat: no-repeat;
+  }
+}

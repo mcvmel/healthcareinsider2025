@@ -1,14 +1,20 @@
 .insurance-by-state {
   &--small {
+    .insurance-by-state__inner {
+      min-height: 487px;
+    }
+
   }
 
   &--large {
+    .insurance-by-state__inner {
+      min-height: 685px;
+    }
   }
 
   &__inner {
     background-image: url('static/images/options-by-state-bg-compressed.png');
     background-size: cover;
-    min-height: 685px;
     border-radius: $border-radius;
     position: relative;
     display: flex;
