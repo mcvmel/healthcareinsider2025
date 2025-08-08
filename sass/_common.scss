@@ -8,6 +8,11 @@
   &:hover {
     background-color: $ice-white;
   }
+  &--no-hover {
+    &:hover {
+      background-color: $white;
+    }
+  }
 }
 
 .btn-container {
