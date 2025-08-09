@@ -5,9 +5,11 @@
   background: $white;
   box-shadow: $box-shadow;
   transition: all $transition-time ease;
+
   &:hover {
     background-color: $ice-white;
   }
+
   &--no-hover {
     &:hover {
       background-color: $white;
@@ -20,6 +22,10 @@
   margin-top: 40px;
   align-items: center;
   justify-content: center;
+
+  &--left {
+    justify-content: flex-start;
+  }
 }
 
 .btn {
@@ -34,4 +40,141 @@
   font-style: normal;
   font-weight: bold;
   text-decoration: none;
+
+  &--secondary {
+    background-color: $white;
+    color: $deep-blue;
+  }
+}
+
+.find-plans-cta {
+  background: $peach-to-sunrise;
+  border: 2px solid $white;
+  border-radius: $border-radius;
+  padding: 40px 40px 40px 410px;
+  display: flex;
+  max-width: 990px;
+  width: 100%;
+  margin: 60px auto;
+  position: relative;
+  overflow:hidden;
+
+  &:before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('static/images/health-plans-cta-bg-shape.png');
+    background-size: auto 100%;
+    background-position: top right;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+  &:after {
+    content: '';
+    height: 95%;
+    width: 410px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-image: url('static/images/health-plans-cta-bg.png');
+    background-size: auto 100%;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+
+    &__heading {
+      line-height: 1.1;
+      letter-spacing: -0.02rem;
+      font-family: $primary-font;
+      font-size: 2rem;
+      font-style: normal;
+      font-weight: 400;
+      display: block;
+      margin: 0 0 15px 0;
+    }
+
+    p {
+
+    }
+
+    a {
+
+    }
+  }
+
+
+}
+
+.call-today-cta {
+  background: $peach-to-sunrise;
+  border: 2px solid $white;
+  border-radius: $border-radius;
+  padding: 40px 40px 40px 410px;
+  display: flex;
+  max-width: 990px;
+  width: 100%;
+  margin: 60px auto;
+  position: relative;
+  overflow:hidden;
+
+  &:before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('static/images/health-plans-cta-bg-shape.png');
+    background-size: auto 100%;
+    background-position: top right;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+  &:after {
+    content: '';
+    height: 95%;
+    width: 410px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-image: url('static/images/call-today-cta-bg.png');
+    background-size: 100% auto;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+
+    &__heading {
+      line-height: 1.1;
+      letter-spacing: -0.02rem;
+      font-family: $primary-font;
+      font-size: 2rem;
+      font-style: normal;
+      font-weight: 400;
+      display: block;
+      margin: 0 0 15px 0;
+    }
+
+    p {
+
+    }
+
+    a {
+
+    }
+  }
+
+
 }

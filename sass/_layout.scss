@@ -21,9 +21,10 @@ section + section {
 
 .ice-swoop {
   position: relative;
+
   &:before {
     top: 0;
-    right:0;
+    right: 0;
     background-position: bottom right;
     background-size: contain;
     content: '';
@@ -35,4 +36,11 @@ section + section {
     position: absolute;
     background-repeat: no-repeat;
   }
+}
+
+hr {
+  margin: 40px auto;
+  background-color: $deep-blue;
+  width: 100%;
+  height: 2px;
 }

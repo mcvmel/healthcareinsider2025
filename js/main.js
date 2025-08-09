@@ -463,6 +463,73 @@ jQuery( document ).ready( function( $ ) {
 		$('.state-filter-flyout').removeClass('open');
 	});
 
+	$('.js-feedback-helpful-yes').on('click', function() {
+		$('.single-content__post-content__feedback__thank-you').addClass('open');
+	});
+
+	$('.js-feedback-helpful-no').on('click', function() {
+		$('.single-content__post-content__feedback__form').addClass('open');
+	});
+
+	$('.js-open-citations').on('click', function() {
+		$('.single-content__post-content__citations__header').toggleClass('open');
+		$('.single-content__post-content__citations__inner').toggleClass('open');
+	});
+
+
+	var $container = $('.single-content__post-content article .entry-content');
+	var $list      = $('.single-content__filter__ul');
+
+	// pick only direct child headings, exclude h3
+	var $heads = $container.children('h1,h2,h4,h5,h6');
+
+	// clear existing items
+	$list.empty();
+
+	// simple slugify
+	function slugify(str){
+		return String(str)
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, '-')
+			.replace(/^-+|-+$/g, '');
+	}
+
+	$heads.each(function(i){
+		var $h   = $(this);
+		var text = $.trim($h.text());
+		if (!text) return;
+
+		var id = $h.attr('id');
+		if (!id){
+			id = 'toc-' + (i+1) + '-' + slugify(text);
+			$h.attr('id', id);
+		}
+
+		// build li
+		var $li = $('<li/>', {
+			'data-id': id,
+			text: text
+		});
+
+		$list.append($li);
+	});
+
+	// click -> smooth scroll with 40px offset
+	$list.on('click', 'li', function(){
+		var id = $(this).data('id');
+		var $target = $('#' + id);
+		if (!$target.length) return;
+
+		$('html, body').animate({
+			scrollTop: $target.offset().top - 40
+		}, 300);
+	});
+
+
+	new SimpleBar(document.getElementById('SingleContentFilterUl'));
+
+
+
 	//aos init
 	AOS.init({
 		offset: 200,

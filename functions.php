@@ -194,6 +194,103 @@ function healthcareinsider2025_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'healthcareinsider2025_scripts' );
 
+
+
+
+
+// Add Shortcode
+function find_plans_cta_shortcode($atts) {
+    global $post;
+
+    // Default values
+    $defaults = array(
+        'headline'  => 'Searching For Health Plans?',
+        'paragraph' => 'Explore ACA Marketplace or Short-Term Medical Health Plans',
+        'content'   => 'default'
+    );
+
+    // Merge defaults with attributes
+    $atts = shortcode_atts($defaults, $atts, 'find_plans_cta');
+
+    // Get current page slug
+    $page_slug = $post ? $post->post_name : '';
+
+    // Get first category slug (or empty if none)
+    $category_slug = '';
+    $categories = get_the_category($post->ID);
+    if (!empty($categories) && !is_wp_error($categories)) {
+        $category_slug = $categories[0]->slug;
+    }
+
+    // Build URL
+    $cta_url = 'https://www.healthcare.com/mp2/healthcare-insurance/survey/?utm_source=hci';
+    $cta_url .= '&utm_medium=' . urlencode($page_slug);
+    $cta_url .= '&utm_campaign=' . urlencode($category_slug);
+    $cta_url .= '&utm_content=' . urlencode($atts['content']);
+
+    // Output HTML
+    ob_start();
+    ?>
+    <div class="find-plans-cta">
+		<div class="find-plans-cta__inner">
+			<span class="find-plans-cta__inner__heading"><?php echo esc_html($atts['headline']); ?></span>
+			<p><?php echo esc_html($atts['paragraph']); ?></p>
+			<div class="btn-container btn-container--left">
+				<a href="<?php echo esc_url($cta_url); ?>" target="_blank" class="btn btn--secondary">Learn More</a>
+			</div>
+		</div>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('find_plans_cta', 'find_plans_cta_shortcode');
+
+
+function call_today_cta_shortcode($atts) {
+	global $post;
+
+	// Default values
+	$defaults = array(
+		'headline'  => 'Find Out How Much You Could Save On Health Insurance',
+		'paragraph' => 'A team of license insurance agents are here to help you compare plans',
+		'content'   => 'default'
+	);
+
+	// Merge defaults with attributes
+	$atts = shortcode_atts($defaults, $atts, 'call_today_cta');
+
+	// Get current page slug
+	$page_slug = $post ? $post->post_name : '';
+
+	// Get first category slug (or empty if none)
+	$category_slug = '';
+	$categories = get_the_category($post->ID);
+	if (!empty($categories) && !is_wp_error($categories)) {
+		$category_slug = $categories[0]->slug;
+	}
+
+	// Build URL
+	$cta_url = 'tel:855-599-3110';
+
+	// Output HTML
+	ob_start();
+	?>
+	<div class="call-today-cta">
+		<div class="call-today-cta__inner">
+			<span class="call-today-cta__inner__heading"><?php echo esc_html($atts['headline']); ?></span>
+			<p><?php echo esc_html($atts['paragraph']); ?></p>
+			<div class="btn-container btn-container--left">
+				<a href="<?php echo esc_url($cta_url); ?>" target="_blank" class="btn btn--secondary">Call Today</a>
+			</div>
+		</div>
+	</div>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode('call_today_cta', 'call_today_cta_shortcode');
+
+
+
 /**
  * Implement the Custom Header feature.
  */
