@@ -2844,7 +2844,7 @@ section.single-content-container {
 .single-content__filter {
 	position: sticky;
 	top: 40px;
-	height: 550px;
+	height: 90vh;
 }
 
 @media (max-width: 520px) {
@@ -2873,9 +2873,9 @@ section.single-content-container {
 }
 
 .single-content__filter__ul {
-	margin: 40px 0 0;
+	margin: 20px 0 40px;
 	padding: 0 0 0 30px;
-	height: 380px;
+	height: 340px;
 	overflow-y: scroll;
 }
 
@@ -2892,6 +2892,90 @@ section.single-content-container {
 
 .single-content__filter__ul li.active {
 	font-weight: bold;
+}
+
+.single-content__filter__download {
+	background: linear-gradient(to bottom, #3768B1, #2A2F60);
+	padding: 15px;
+	border-radius: 12px;
+}
+
+.single-content__filter__download .small-heading {
+	margin: 0 0 10px 0;
+}
+
+.single-content__filter__download * {
+	color: #ffffff;
+}
+
+.single-content__filter__download .gform_required_legend, .single-content__filter__download .gform_description {
+	display: none;
+}
+
+.single-content__filter__download .gform_wrapper.gravity-theme .field_description_above .description, .single-content__filter__download .gform_wrapper.gravity-theme .field_description_above .gfield_description, .single-content__filter__download .gform_wrapper.gravity-theme .field_description_above .gsection_description, .single-content__filter__download .gform_wrapper.gravity-theme .field_description_above .instruction {
+	padding: 0 0 10px;
+}
+
+.single-content__filter__download .gform-field-label {
+	font-size: 14px;
+	line-height: 1.1;
+}
+
+.single-content__filter__download fieldset .ginput_container {
+	display: grid;
+	grid-template-columns: 20px auto;
+	grid-gap: 10px;
+}
+
+.single-content__filter__download input[type="checkbox"] {
+	height: 20px;
+	width: 20px;
+	background-color: transparent;
+	border: 2px solid #ffffff;
+	appearance: none;
+}
+
+.single-content__filter__download .ginput_container input[type="email"] {
+	appearance: none;
+	border: 2px solid #ffffff;
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+.single-content__filter__download .ginput_container input[type="email"]::placeholder {
+	color: #ffffff;
+}
+
+.single-content__filter__download .ginput_container input[type="email"]::-webkit-input-placeholder {
+	color: #ffffff;
+}
+
+.single-content__filter__download .ginput_container input[type="email"]:-ms-input-placeholder {
+	color: #ffffff;
+}
+
+.single-content__filter__download .ginput_container input[type="email"]::-ms-input-placeholder {
+	color: #ffffff;
+}
+
+.single-content__filter__download .gform-footer.gform_footer {
+	align-items: center;
+	justify-content: center;
+}
+
+.single-content__filter__download input[type="submit"] {
+	all: unset;
+	border-radius: 6.25rem;
+	display: inline-block;
+	line-height: 1;
+	padding: 14px 20px;
+	background-color: #ffffff;
+	color: #2A2F60;
+	font-family: "Poppins Medium", sans-serif;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 .single-content__post-content {
@@ -3140,6 +3224,43 @@ section.single-content-container {
 	margin-top: 64px;
 }
 
+.single-content__post-content article figure {
+	margin: 40px 0;
+	padding: 0;
+}
+
+.single-content__post-content article table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 16px;
+}
+
+.single-content__post-content article table th,
+.single-content__post-content article table td {
+	padding: 0.75rem;
+	border: 1px solid #F6F6F6;
+	text-align: left;
+	vertical-align: top;
+}
+
+.single-content__post-content article table thead {
+	background-color: #F7FCFE;
+	font-weight: bold;
+}
+
+.single-content__post-content article table tr:nth-child(even) {
+	background-color: #F6F6F6;
+}
+
+.single-content__post-content article table a {
+	color: #3768B1;
+	text-decoration: underline;
+}
+
+.single-content__post-content article table a:hover {
+	text-decoration: none;
+}
+
 .single-content__post-content__bottom-author {
 	padding: 30px;
 	border-radius: 24px;
@@ -3293,6 +3414,10 @@ section.single-content-container {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+
+.single-content__post-content__citations__header span.h3 {
+	margin: 0;
 }
 
 .single-content__post-content__citations__header button {

@@ -74,7 +74,7 @@ section.single-content-container {
   &__filter {
     position: sticky;
     top: 40px;
-    height: 550px;
+    height: 90vh;
 
     .simplebar-content {
       @media (max-width: $mobile) {
@@ -102,9 +102,9 @@ section.single-content-container {
     }
 
     &__ul {
-      margin: 40px 0 0;
+      margin: 20px 0 40px;
       padding: 0 0 0 30px;
-      height: 380px;
+      height: 340px;
       overflow-y: scroll;
 
       li {
@@ -120,6 +120,90 @@ section.single-content-container {
         &.active {
           font-weight: bold;
         }
+      }
+    }
+
+    &__download {
+      background: $sky-to-deep-blue;
+      padding: 15px;
+      border-radius: $border-radius-small;
+
+      .small-heading {
+        margin: 0 0 10px 0;
+      }
+
+      * {
+        color: $white;
+      }
+
+      .gform_required_legend, .gform_description {
+        display: none;
+      }
+
+      .gform_wrapper.gravity-theme .field_description_above .description, .gform_wrapper.gravity-theme .field_description_above .gfield_description, .gform_wrapper.gravity-theme .field_description_above .gsection_description, .gform_wrapper.gravity-theme .field_description_above .instruction {
+        padding: 0 0 10px;
+      }
+
+      .gform-field-label {
+        font-size: 14px;
+        line-height: 1.1;
+      }
+      fieldset .ginput_container {
+        display: grid;
+        grid-template-columns: 20px auto;
+        grid-gap: 10px;
+      }
+
+      input[type="checkbox"] {
+        height: 20px;
+        width: 20px;
+        background-color: transparent;
+        border: 2px solid $white;
+        appearance: none;
+      }
+
+      .ginput_container {
+        input[type="email"] {
+          appearance: none;
+          border: 2px solid $white;
+          background-color: rgba($white, .05);
+          &::placeholder {
+            color: $white;
+          }
+
+          &::-webkit-input-placeholder {
+            color: $white;
+          }
+
+          &:-ms-input-placeholder {
+            color: $white;
+          }
+
+          &::-ms-input-placeholder {
+            color: $white;
+          }
+        }
+      }
+
+      .gform-footer.gform_footer {
+        align-items: center;
+        justify-content: center;
+      }
+
+      input[type="submit"] {
+        all: unset; // strips all inherited and default styles
+        border-radius: 6.25rem;
+        display: inline-block;
+        line-height: 1;
+        padding: 14px 20px;
+        background-color: $white;
+        color: $deep-blue;
+        font-family: $primary-font-medium;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
       }
     }
   }
@@ -392,6 +476,45 @@ section.single-content-container {
           margin-top: 64px;
         }
       }
+
+      figure {
+        margin: 40px 0;
+        padding: 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 16px;
+
+        th,
+        td {
+          padding: 0.75rem;
+          border: 1px solid $light-gray;
+          text-align: left;
+          vertical-align: top;
+        }
+
+        thead {
+          background-color: $ice-white;
+          font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+          background-color: $light-gray;
+        }
+
+        a {
+          color: $sky-blue;
+          text-decoration: underline;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+
+
     }
 
 
@@ -533,7 +656,7 @@ section.single-content-container {
         display: none;
         opacity: 0;
 
-        &.open{
+        &.open {
           display: block;
           opacity: 1;
         }
@@ -550,6 +673,10 @@ section.single-content-container {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        span.h3 {
+          margin: 0;
+        }
 
         button {
           height: 45px;
@@ -613,7 +740,7 @@ section.single-content-container {
   }
 
   &__grid {
-   display: grid;
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 40px;
 
