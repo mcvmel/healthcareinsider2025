@@ -52,7 +52,22 @@ get_header();
                 elseif (get_row_layout() == 'health_insurance_state_directory'):
                     get_template_part('template-parts/health-insurance-state-directory');
 
+                // Case: Health Insurance State Directory
+                elseif (get_row_layout() == 'values'):
+                    get_template_part('template-parts/values');
 
+                // Case: Health Insurance State Directory
+                elseif (get_row_layout() == 'author_grid'):
+                    get_template_part('template-parts/author-grid');
+
+                // Case: Health Insurance State Directory
+                elseif (get_row_layout() == 'reviewer_grid'):
+                    get_template_part('template-parts/reviewer-grid');
+
+
+                // Case: Health Insurance State Directory
+                elseif (get_row_layout() == 'simple_cta'):
+                    get_template_part('template-parts/simple-cta');
 
 
 

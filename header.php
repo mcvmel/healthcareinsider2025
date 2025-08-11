@@ -38,7 +38,7 @@ $phone_number = get_field('footer_options_phone_number', 'option');
                     <?php endif; ?>
                 </div>
 
-                <button class="site-header__utility__search" aria-label="Search">
+                <button class="site-header__utility__search js-open-search" aria-label="Search">
                     <img src="<?php echo get_template_directory_uri(); ?>/static/images/icon-search.svg"
                          alt="Search Icon" class="site-header__utility__icon">
                     Search

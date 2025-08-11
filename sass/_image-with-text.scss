@@ -1,13 +1,13 @@
 .image-with-text {
   &--left {
     .image-with-text__inner {
-      grid-template-columns: 5fr 7fr;
+      grid-template-columns: 4fr 8fr;
     }
   }
 
   &--right {
     .image-with-text__inner {
-      grid-template-columns: 5fr 7fr;
+      grid-template-columns: 4fr 8fr;
       direction: rtl;
       grid-auto-flow: dense;
 
@@ -17,6 +17,7 @@
 
         ol, ul {
           margin: 40px;
+
           li {
             margin: 0 0 15px 0;
           }
@@ -42,6 +43,26 @@
     }
 
     &__content {
+      &__breadcrumb {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+
+        img {
+          max-height: 15px;
+          width: auto;
+        }
+
+        a {
+          color: $deep-blue;
+          font-size: 1.125rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 100%;
+          letter-spacing: -0.01125rem;
+          font-family: $primary-font-medium;
+        }
+      }
     }
   }
 }

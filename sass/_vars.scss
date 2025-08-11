@@ -43,9 +43,12 @@ $deco-green: #C2D98C;
 $growing-green: #87BE42;
 $gray: #8D8D8D;
 $light-gray: #F6F6F6;
-$ice-to-catskill: linear-gradient(to bottom, $ice-white, $catskill-white);
+$ice-to-catskill: linear-gradient(to bottom,$ice-white, $catskill-white);
+$white-ice-to-catskill: linear-gradient(to bottom, $white, $ice-white, $catskill-white);
 $peach-to-sunrise: linear-gradient(to bottom, $peach-yellow, $sunrise-yellow);
+$white-peach-to-sunrise: linear-gradient(to bottom, $white, $peach-yellow, $sunrise-yellow);
 $sky-to-deep-blue: linear-gradient(to bottom, $sky-blue, $deep-blue);
+$white-sky-to-deep-blue: linear-gradient(to bottom, $white, $sky-blue, $deep-blue);
 
 // breakpoints
 $laptop: 1440px;

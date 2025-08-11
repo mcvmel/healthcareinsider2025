@@ -15,24 +15,38 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+    <main id="primary" class="site-main">
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+        <section class="single-hero">
+            <div class="container">
+                <div class="single-hero__inner">
+                    <h1 class="h2"><?php the_title(); ?></h1>
+                    <div class="single-hero__inner__meta">
+						<p>Update on <?php echo get_the_modified_date('F j, Y'); ?></p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-			get_template_part( 'template-parts/content', 'page' );
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+        <section class="page-content-container">
+            <div class="container">
+                <div class="page-content">
+                    <div class="page-content__filter">
+                        <ul id="SingleContentFilterUl" class="page-content__filter__ul" data-simplebar
+                            data-simplebar-auto-hide="false">
+                        </ul>
+                    </div>
 
-		endwhile; // End of the loop.
-		?>
+                    <div class="page-content__post-content">
+                        <?php the_content(); ?>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-	</main><!-- #main -->
+
+    </main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();

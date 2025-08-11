@@ -135,6 +135,13 @@ $legal_disclaimer   = get_field('footer_options_disclaimer', 'option');
     </div>
 </section>
 
+<section class="search-overlay">
+    <button class="search-overlay__close js-close-search"></button>
+    <div class="search-overlay__inner">
+        <span class="h2">Search</span>
+        <?php get_search_form(); ?>
+    </div>
+</section>
 
 </div><!-- #page -->
 

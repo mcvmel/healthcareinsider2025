@@ -1,57 +1,121 @@
 <?php
 /**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
+ * Index (Blog) – lists all categories + posts
  * @package healthcareinsider2025
  */
+
+// --- UTM for blog index ---
+$idx_base_url = 'https://www.healthcare.com/mp2/healthcare-insurance/survey/?utm_source=hci';
+
+// We’re on the blog index; treat slug as "blog" (or "home" if it's the front page)
+$idx_slug      = is_front_page() ? 'home' : 'blog';
+$idx_campaign  = 'all-categories';
+$idx_utm_params = [
+	'utm_medium'   => sanitize_title($idx_slug),
+	'utm_campaign' => sanitize_title($idx_campaign),
+	'utm_content'  => 'sidebar',
+];
+$idx_full_url = add_query_arg($idx_utm_params, $idx_base_url);
 
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
 
-		<?php
-		if ( have_posts() ) :
+	<!-- Generic hero (no category/term usage) -->
+	<section class="image-with-text image-with-text--right">
+		<div class="container">
+			<div class="image-with-text__inner">
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
+				<div class="image-with-text__inner__image">
+					<img
+						src="<?php echo esc_url(get_template_directory_uri() . '/static/images/category-fallback.png'); ?>"
+						alt="Health Care Articles" />
+				</div>
 
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+				<div class="image-with-text__inner__content">
+					<h1>Healthcare Articles</h1>
+					<p>Browse our latest articles and explore categories below.</p>
+				</div>
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
+			</div>
+		</div>
+	</section>
 
-			endwhile;
+	<section class="archive-content-container">
+		<div class="container">
+			<div class="archive-content">
 
-			the_posts_navigation();
+				<div class="archive-content__filter">
+					<span class="small-heading">Categories</span>
+					<ul class="archive-content__filter__ul" data-simplebar data-simplebar-auto-hide="false">
+						<?php
+						$idx_categories = get_categories([
+							'orderby'     => 'name',
+							'order'       => 'ASC',
+							'hide_empty'  => false, // set true to show only categories with posts
+						]);
 
-		else :
+						foreach ($idx_categories as $idx_cat) :
+							$idx_cat_link = get_category_link($idx_cat->term_id);
+							?>
+							<li>
+								<a href="<?php echo esc_url($idx_cat_link); ?>">
+									<?php echo esc_html($idx_cat->name); ?>
+								</a>
+							</li>
+						<?php endforeach; ?>
+					</ul>
 
-			get_template_part( 'template-parts/content', 'none' );
+					<div class="archive-content__filter__download">
+						<span class="small-heading">Searching For Health Plans?</span>
+						<p>Explore ACA Marketplace or Short-Term Medical Health Plans</p>
+						<div class="btn-container">
+							<a href="<?php echo esc_url($idx_full_url); ?>" class="btn btn--secondary">Find Plans</a>
+						</div>
+					</div>
+				</div>
 
-		endif;
-		?>
+				<div class="archive-content__post-content">
+					<?php if (have_posts()) : ?>
+						<?php while (have_posts()) : the_post(); ?>
+							<article class="article-card">
+								<a href="<?php the_permalink(); ?>" class="article-card__image">
+									<?php the_post_thumbnail('medium'); ?>
+									<?php
+									$idx_post_cats = get_the_category();
+									if (!empty($idx_post_cats)) : ?>
+										<span class="article-card__image__category">
+                                            <?php echo esc_html($idx_post_cats[0]->name); ?>
+                                        </span>
+									<?php endif; ?>
+								</a>
+								<div class="article-card__content">
+									<div class="article-card__content__date"><?php echo get_the_date(); ?></div>
+									<a class="article-card__content__title" href="<?php the_permalink(); ?>">
+										<?php the_title(); ?>
+									</a>
+									<div class="article-card__content__excerpt"><?php the_excerpt(); ?></div>
+									<a href="<?php the_permalink(); ?>" class="article-card__content__link">Read More</a>
+								</div>
+							</article>
+						<?php endwhile; ?>
+					<?php else : ?>
+						<p>No results found.</p>
+					<?php endif; ?>
 
-	</main><!-- #main -->
+					<nav class="pagination">
+						<?php echo paginate_links([
+							'prev_text' => '',
+							'next_text' => '',
+						]); ?>
+					</nav>
+				</div>
 
-<?php
-get_sidebar();
-get_footer();
+			</div>
+		</div>
+	</section>
+
+</main>
+
+<?php get_footer(); ?>

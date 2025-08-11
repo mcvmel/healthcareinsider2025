@@ -477,6 +477,7 @@ jQuery( document ).ready( function( $ ) {
 	});
 
 
+	// posts auto fill TOC
 	var $container = $('.single-content__post-content article .entry-content');
 	var $list      = $('.single-content__filter__ul');
 
@@ -525,10 +526,79 @@ jQuery( document ).ready( function( $ ) {
 		}, 300);
 	});
 
+	// init SimpleBar safely on the TOC list
+	var filterEl = document.querySelector('.single-content__filter__ul');
+	if (filterEl && window.SimpleBar) {
+		new SimpleBar(filterEl, { autoHide: false });
+	}
 
-	new SimpleBar(document.getElementById('SingleContentFilterUl'));
 
 
+	//page auto fill TOC
+	var $containerpage = $('.page-content .page-content__post-content');
+	var $listpage      = $('.page-content__filter__ul');
+
+	// pick only direct child headings, exclude h3
+	var $heads = $containerpage.children('h1,h2,h4,h5,h6');
+
+	// clear existing items
+	$listpage.empty();
+
+	// simple slugify
+	function slugify(str){
+		return String(str)
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, '-')
+			.replace(/^-+|-+$/g, '');
+	}
+
+	$heads.each(function(i){
+		var $h   = $(this);
+		var text = $.trim($h.text());
+		if (!text) return;
+
+		var id = $h.attr('id');
+		if (!id){
+			id = 'toc-' + (i+1) + '-' + slugify(text);
+			$h.attr('id', id);
+		}
+
+		// build li
+		var $li = $('<li/>', {
+			'data-id': id,
+			text: text
+		});
+
+		$listpage.append($li);
+	});
+
+	// click -> smooth scroll with 40px offset
+	$listpage.on('click', 'li', function(){
+		var id = $(this).data('id');
+		var $target = $('#' + id);
+		if (!$target.length) return;
+
+		$('html, body').animate({
+			scrollTop: $target.offset().top - 40
+		}, 300);
+	});
+
+	// init SimpleBar safely on the TOC list
+	var filterElPage = document.querySelector('.page-content__filter__ul');
+	if (filterElPage && window.SimpleBar) {
+		new SimpleBar(filterElPage, { autoHide: false });
+	}
+
+
+	$('.js-open-search').on('click', function(e) {
+		e.preventDefault();
+		$('.search-overlay').addClass('show');
+	});
+
+	$('.js-close-search').on('click', function(e) {
+		e.preventDefault();
+		$('.search-overlay').removeClass('show');
+	});
 
 	//aos init
 	AOS.init({

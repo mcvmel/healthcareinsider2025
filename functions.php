@@ -291,6 +291,46 @@ add_shortcode('call_today_cta', 'call_today_cta_shortcode');
 
 
 
+// Shortcode: [hci_contact_card]
+function hci_contact_card_shortcode() {
+	// ACF Options fields
+	$email   = get_field('general_options_email', 'option');   // Email field
+	$address = get_field('general_options_address', 'option'); // WYSIWYG field
+
+	if (empty($email) && empty($address)) {
+		return ''; // nothing to show
+	}
+
+	// Protect the email a bit
+	$safe_email = $email ? antispambot($email) : '';
+
+	ob_start(); ?>
+	<div class="contact-card">
+		<div class="contact-card__inner">
+			<?php if ($safe_email) : ?>
+				<div class="contact-card__inner__item">
+                    <span class="contact-card__inner__item__email-icon"></span>
+					<p><a href="mailto:<?php echo esc_attr($safe_email); ?>">
+							<?php echo esc_html($safe_email); ?>
+						</a></p>
+				</div>
+			<?php endif; ?>
+
+			<?php if (!empty($address)) : ?>
+				<div class="contact-card__inner__item">
+                    <span class="contact-card__inner__item__map-icon"></span>
+					<?php echo wp_kses_post($address); ?>
+				</div>
+			<?php endif; ?>
+		</div>
+	</div>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode('contact_card', 'hci_contact_card_shortcode');
+
+
+
 /**
  * Implement the Custom Header feature.
  */

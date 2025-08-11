@@ -84,9 +84,10 @@
   flex-direction: column;
   height: 100%;
 
+
   &__image {
     width: 100%;
-    height: 240px;
+    height: 190px;
     display: block;
     position: relative;
     overflow: hidden;
@@ -118,6 +119,19 @@
       align-self: flex-start;
       margin-bottom: 0;
       font-family: $secondary-font;
+
+      &--featured {
+        background-color: $deco-green;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: $deep-blue;
+        img {
+          all:unset;
+          height: 16px;
+          width: auto;
+        }
+      }
     }
   }
 

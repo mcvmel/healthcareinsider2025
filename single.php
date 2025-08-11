@@ -112,7 +112,7 @@ get_header();
 
     <main id="primary" class="site-main">
 
-        <section class="single-hero">
+        <section class="single-hero single-hero--search-results">
             <div class="container">
                 <div class="single-hero__inner">
                     <div class="single-hero__inner__bread-crumbs">
@@ -412,33 +412,49 @@ get_header();
 
                                 <?php if ($author_fb || $author_tw || $author_ig || $author_li || $author_www) : ?>
                                     <div class="single-content__post-content__bottom-author__left__social">
-                                        <?php if ($author_fb) : ?><img
-                                            src="<?php echo esc_url(get_template_directory_uri() . '/static/images/facebook-icon-blue.png'); ?>"
-                                            alt="Facebook"><a href="<?php echo esc_url($author_fb); ?>" target="_blank"
-                                                              rel="noopener">Facebook</a><?php endif; ?>
-                                        <?php if ($author_tw) : ?><img
-                                            src="<?php echo esc_url(get_template_directory_uri() . '/static/images/twitter-icon-blue.png'); ?>"
-                                            alt="Twitter"><a href="<?php echo esc_url($author_tw); ?>" target="_blank"
-                                                             rel="noopener">Twitter</a><?php endif; ?>
-                                        <?php if ($author_ig) : ?><img
-                                            src="<?php echo esc_url(get_template_directory_uri() . '/static/images/instagram-icon-blue.png'); ?>"
-                                            alt="Instagram"><a href="<?php echo esc_url($author_ig); ?>" target="_blank"
-                                                               rel="noopener">Instagram</a><?php endif; ?>
-                                        <?php if ($author_li) : ?><img
-                                            src="<?php echo esc_url(get_template_directory_uri() . '/static/images/Linkedin-icon-blue.png'); ?>"
-                                            alt="Linkedin"><a href="<?php echo esc_url($author_li); ?>" target="_blank"
-                                                              rel="noopener">LinkedIn</a><?php endif; ?>
-                                        <?php if ($author_www) : ?><img
-                                            src="<?php echo esc_url(get_template_directory_uri() . '/static/images/browser-icon.png'); ?>"
-                                            alt="Website"><a href="<?php echo esc_url($author_www); ?>" target="_blank"
-                                                             rel="noopener">Website</a><?php endif; ?>
+                                        <?php if ($author_fb) : ?>
+                                            <div><img
+                                                    src="<?php echo esc_url(get_template_directory_uri() . '/static/images/facebook-icon-blue.png'); ?>"
+                                                    alt="Facebook"><a href="<?php echo esc_url($author_fb); ?>" target="_blank"
+                                                                      rel="noopener">Facebook</a></div>
+                                            <?php endif; ?>
+                                        <?php if ($author_tw) : ?>
+                                        <div><img
+                                                src="<?php echo esc_url(get_template_directory_uri() . '/static/images/twitter-icon-blue.png'); ?>"
+                                                alt="Twitter"><a href="<?php echo esc_url($author_tw); ?>" target="_blank"
+                                                                 rel="noopener">Twitter</a></div>
+                                        <?php endif; ?>
+                                        <?php if ($author_ig) : ?>
+                                        <div><img
+                                                src="<?php echo esc_url(get_template_directory_uri() . '/static/images/instagram-icon-blue.png'); ?>"
+                                                alt="Instagram"><a href="<?php echo esc_url($author_ig); ?>" target="_blank"
+                                                                   rel="noopener">Instagram</a></div>
+
+                                        <?php endif; ?>
+                                        <?php if ($author_li) : ?>
+                                        <div><img
+                                                src="<?php echo esc_url(get_template_directory_uri() . '/static/images/Linkedin-icon-blue.png'); ?>"
+                                                alt="Linkedin"><a href="<?php echo esc_url($author_li); ?>" target="_blank"
+                                                                  rel="noopener">LinkedIn</a></div>
+
+                                        <?php endif; ?>
+                                        <?php if ($author_www) : ?>
+                                        <div><img
+                                                src="<?php echo esc_url(get_template_directory_uri() . '/static/images/browser-icon.png'); ?>"
+                                                alt="Website"><a href="<?php echo esc_url($author_www); ?>" target="_blank"
+                                                                 rel="noopener">Website</a></div>
+                                        <?php endif; ?>
                                     </div>
                                 <?php endif; ?>
 
                             </div>
                             <div class="single-content__post-content__bottom-author__right">
                                 <span class="single-content__post-content__bottom-author__right__eyebrow">About the author</span>
-                                <p class="single-content__post-content__bottom-author__right__name"><?php echo esc_html($author_name); ?></p>
+                                <p class="single-content__post-content__bottom-author__right__name">
+                                    <a href="<?php echo esc_url(get_author_posts_url($author_id)); ?>">
+                                        <?php echo esc_html($author_name); ?>
+                                    </a>
+                                </p>
 
                                 <?php if (!empty($author_headline)) : ?>
                                     <p><?php echo esc_html($author_headline); ?></p>

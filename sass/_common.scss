@@ -57,7 +57,7 @@
   width: 100%;
   margin: 60px auto;
   position: relative;
-  overflow:hidden;
+  overflow: hidden;
 
   &:before {
     content: '';
@@ -72,6 +72,7 @@
     background-repeat: no-repeat;
     z-index: 1;
   }
+
   &:after {
     content: '';
     height: 95%;
@@ -123,7 +124,7 @@
   width: 100%;
   margin: 60px auto;
   position: relative;
-  overflow:hidden;
+  overflow: hidden;
 
   &:before {
     content: '';
@@ -138,6 +139,7 @@
     background-repeat: no-repeat;
     z-index: 1;
   }
+
   &:after {
     content: '';
     height: 95%;
@@ -175,6 +177,55 @@
 
     }
   }
+}
 
 
+.contact-card {
+  margin: 40px auto;
+  max-width: 690px;
+  width: 100%;
+  border-radius: $border-radius-small;
+  background: $ice-to-catskill;
+  padding: 20px;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 15px;
+
+    &__item {
+      display: flex;
+      flex-direction: row;
+      grid-gap: 10px;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      a {
+        color: $deep-blue;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      &__email-icon {
+        display: block;
+        height: 22px;
+        width: 25px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url('static/images/email-icon.png');
+      }
+
+      &__map-icon {
+        display: block;
+        height: 26px;
+        width: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url('static/images/map-icon.png');
+      }
+    }
+  }
 }

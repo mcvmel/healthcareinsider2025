@@ -1,0 +1,140 @@
+.search-overlay {
+  margin: 0;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba($ice-white, .9);
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $transition-time ease;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__close {
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    height: 45px;
+    width: 45px;
+    appearance: none;
+    border: 2px solid $deep-blue;
+    border-radius: 45px;
+    background-color: $white;
+    box-shadow: $box-shadow;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: center;
+    transition: opacity $transition-time ease;
+    opacity: 1;
+    background-image: url('static/images/icon-close.png');
+  }
+
+  &__inner {
+    max-width: 60vw;
+    text-align: center;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    grid-gap: 30px;
+
+    span {
+      margin: 0;
+    }
+
+    .screen-reader-text {
+      visibility: hidden;
+    }
+
+    .search-form {
+      display: flex;
+      flex-direction: row;
+      grid-gap: 30px;
+      justify-content: center;
+      align-items: center;
+
+      label {
+        .screen-reader-text {
+        }
+
+        .search-field {
+          appearance: none;
+          border: 2px solid $deep-blue;
+          padding: 15px;
+
+          &::placeholder {
+            color: $deep-blue;
+          }
+
+          &::-webkit-input-placeholder {
+            color: $deep-blue;
+          }
+
+          &:-ms-input-placeholder {
+            color: $deep-blue;
+          }
+
+          &::-ms-input-placeholder {
+            color: $deep-blue;
+          }
+        }
+      }
+
+      .search-submit {
+        all: unset; // strips all inherited and default styles
+        border-radius: 6.25rem;
+        display: inline-block;
+        line-height: 1;
+        padding: 20px 30px;
+        background-color: $deep-blue;
+        color: $white;
+        font-family: $primary-font-medium;
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.search-results {
+  margin-bottom: 80px;
+  padding-bottom: 80px;
+  position: relative;
+
+  &:before {
+    content: '';
+    max-height: 900px;
+    height: 50%;
+    position: absolute;
+    width: 100%;
+    background: $white-ice-to-catskill;
+    left: 0;
+    bottom: 0;
+  }
+
+  &__header{
+    margin: 40px auto;
+    text-align: center;
+  }
+
+  &__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 60px 30px;
+  }
+}

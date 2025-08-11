@@ -1,0 +1,37 @@
+.values {
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 80px;
+
+    &__row {
+      display: grid;
+      grid-gap: 80px;
+      justify-content: flex-start;
+      align-items: flex-start;
+      grid-template-columns: 3fr 9fr;
+
+      &__left {
+        display: flex;
+        flex-direction: row;
+        grid-gap: 10px;
+        position: relative;
+
+        &:before {
+          content: '';
+          display: block;
+          height: 40px;
+          width: 6px;
+          background-color: $sunrise-yellow;
+          position: relative;
+        }
+
+        span {
+        }
+      }
+
+      &__right {
+      }
+    }
+  }
+}
