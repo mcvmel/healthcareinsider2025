@@ -19,7 +19,7 @@ $image_position = get_sub_field('image_position');
                 <?php echo $text; ?>
 
                 <?php if ($link): ?>
-                    <div class="btn-container">
+                    <div class="btn-container btn-container--left">
                         <a href="<?php echo esc_url($link['url']); ?>" class="btn"<?php if ($link['target']) echo ' target="' . esc_attr($link['target']) . '"'; ?>>
                             <?php echo esc_html($link['title']); ?>
                         </a>

@@ -1,11 +1,9 @@
 <?php
-/**
- * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package healthcareinsider2025
- */
+if (in_category('healthcare-guides')) {
+    get_template_part('single', 'healthcare-guides');
+    return;
+}
+
 $insurer_short_name = get_field('insurer_short_name');
 $state_name = get_field('state_name');
 $fact_checked = get_field('fact_checked');
@@ -509,7 +507,7 @@ get_header();
                                     alt="No" class="js-feedback-helpful-no">
                             </div>
                             <div class="single-content__post-content__feedback__form">
-                                placeholder
+                                <?php echo do_shortcode('[gravityform id="11" title="false"]') ?>
                             </div>
                             <div class="single-content__post-content__feedback__thank-you">
                                 <p>Thank you for your feedback!</p>

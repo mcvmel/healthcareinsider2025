@@ -21,6 +21,10 @@
           border-radius: 70px;
           display: block;
           margin: 0 auto 20px;
+          img {
+            height: 100%;
+            width: auto;
+          }
         }
 
         &__name {

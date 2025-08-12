@@ -71,16 +71,6 @@ get_header();
 
 
 
-
-                // Case: Links
-                elseif (get_row_layout() == 'links'):
-                    get_template_part('template-parts/links');
-
-                // Case: Social Icons
-                elseif (get_row_layout() == 'social_icons'):
-                    get_template_part('template-parts/social-icons');
-
-
                 endif;
 
                 // End loop.

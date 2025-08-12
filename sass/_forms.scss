@@ -1,0 +1,23 @@
+.gform_wrapper input[type="submit"]:not(.single-content__filter__download input[type="submit"]),
+.gform-theme input[type="submit"]:not(.single-content__filter__download input[type="submit"])  {
+  border-radius: 6.25rem !important;
+  background: $sky-blue !important;
+  display: inline-block !important;
+  line-height: 1 !important;
+  padding: 20px 30px !important;
+  color: $white !important;
+  font-family: $primary-font-medium !important;
+  font-size: 1.125rem !important;
+  font-style: normal !important;
+  font-weight: bold !important;
+  text-decoration: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: background-color $transition-time ease;
+
+}
+
+.gform_wrapper input[type="submit"]:not(.single-content__filter__download input[type="submit"]):hover,
+.gform-theme input[type="submit"]:not(.single-content__filter__download input[type="submit"]):hover  {
+  background: darken($sky-blue, 8%);
+}

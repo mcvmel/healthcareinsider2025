@@ -38,7 +38,7 @@
   },
   "scripts": {
     "watch": "node-sass sass/ -o ./ --source-map true --output-style expanded --indent-type tab --indent-width 1 -w",
-    "compile:css": "node-sass sass/ -o ./ && stylelint '*.css' --fix || true && stylelint '*.css' --fix",
+    "compile:css": "node-sass sass/ -o ./ --output-style compressed",
     "compile:rtl": "rtlcss style.css style-rtl.css",
     "build:js": "node-minify --compressor uglify-js --input 'js/main.js' --output 'js/main.min.js'",
     "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
@@ -48,6 +48,7 @@
   "dependencies": {
     "@node-minify/cli": "^6.2.0",
     "@node-minify/uglify-js": "^6.2.0",
-    "node-minify": "^3.6.0"
+    "node-minify": "^3.6.0",
+    "wp-cli": "^0.0.5"
   }
 }

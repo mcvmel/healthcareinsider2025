@@ -476,6 +476,13 @@ jQuery( document ).ready( function( $ ) {
 		$('.single-content__post-content__citations__inner').toggleClass('open');
 	});
 
+	$('.js-open-guide-section').on('click', function() {
+		$(this)
+			.closest('.guide-section')               // find the closest parent section
+			.find('.guide-section__text')            // select only its text block
+			.toggleClass('open');                    // toggle the class
+	});
+
 
 	// posts auto fill TOC
 	var $container = $('.single-content__post-content article .entry-content');
@@ -531,7 +538,6 @@ jQuery( document ).ready( function( $ ) {
 	if (filterEl && window.SimpleBar) {
 		new SimpleBar(filterEl, { autoHide: false });
 	}
-
 
 
 	//page auto fill TOC
@@ -599,6 +605,55 @@ jQuery( document ).ready( function( $ ) {
 		e.preventDefault();
 		$('.search-overlay').removeClass('show');
 	});
+
+
+
+	var $menu      = $('#HealthGuideFilterUl');
+	var $content   = $('.single-content__post-content');
+	var $headings  = $content.find('.guide-section .guide-section__heading');
+	var scrollOffs = 80; // adjust for sticky header height
+
+	if (!$menu.length || !$headings.length) return;
+
+	$menu.empty();
+
+	$headings.each(function (i) {
+		var $wrap  = $(this);
+		var $hx    = $wrap.find('h1,h2,h3,h4,h5,h6').first();
+		var label  = $.trim(($hx.length ? $hx.text() : $wrap.text()).replace(/\s+/g, ' '));
+		if (!label) label = 'Section ' + (i + 1);
+
+		var id = $wrap.attr('id');
+		if (!id) {
+			id = 'hg-sec-' + (i + 1);
+			$wrap.attr('id', id);
+		}
+
+		$('<li/>')
+			.attr('data-hf-target', '#' + id)
+			.text(label)
+			.appendTo($menu);
+	});
+
+	$menu.on('click', 'li', function () {
+		var sel     = $(this).attr('data-hf-target');
+		var $target = $(sel);
+		if (!$target.length) return;
+
+		$('html, body').animate({ scrollTop: $target.offset().top - scrollOffs }, 400, function () {
+			$target.closest('.guide-section')
+				.find('.js-open-guide-section')
+				.first()
+				.trigger('click');
+		});
+	});
+
+
+	var filterElHealthcareGuide = document.getElementById('HealthGuideFilterUl');
+	if (filterElHealthcareGuide && window.SimpleBar) {
+		new SimpleBar(filterElHealthcareGuide, { autoHide: false });
+	}
+
 
 	//aos init
 	AOS.init({

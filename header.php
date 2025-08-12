@@ -64,7 +64,8 @@ $phone_number = get_field('footer_options_phone_number', 'option');
                         'container' => 'div',
                         'container_class' => 'site-header__main__menu',
                         'menu_class' => 'site-header__main__menu__list',
-                        'fallback_cb' => false,
+                        'fallback_cb'    => false,
+                        'walker'         => new HCI_Primary_Walker(), // ← use our walker
                     ]);
                     ?>
                 </nav>

@@ -27,6 +27,9 @@
       width: 100%;
 
       &__text {
+        a {
+          color: $deep-blue;
+        }
       }
 
       &__form {
@@ -34,6 +37,10 @@
       }
 
       &__disclaimer {
+        font-size: 1rem;
+        a {
+          color: $deep-blue;
+        }
       }
     }
 
@@ -46,6 +53,15 @@
 
   * {
     color: $white;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      color: $white;
+      text-decoration: underline;
+    }
   }
 
   &__top {
@@ -148,6 +164,7 @@
             font-weight: 400;
             line-height: 1;
             letter-spacing: -0.01125rem;
+
           }
         }
       }
@@ -157,6 +174,7 @@
   &__legal {
     display: grid;
     grid-template-columns: auto auto;
+
     &__links {
       p {
         font-size: 1.125rem;
@@ -169,6 +187,7 @@
 
     &__copyright {
       text-align: right;
+
       p {
         font-size: 1.125rem;
         font-style: normal;

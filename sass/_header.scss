@@ -200,7 +200,47 @@
               height: 3rem;
               background-color: $catskill-white;
               border-radius: 50%;
+              background-size: cover;
             }
+          }
+
+          // ACA Plans
+          &.menu-item--cat-24 > a::before {
+            background-image: url('/wp-content/uploads/2025/08/icon-aca.png');
+          }
+
+          // Annual/Open Enrollment
+          &.menu-item--cat-137 > a::before {
+            background-image: url('/wp-content/uploads/2025/08/icon-open-enrollment.png');
+          }
+
+          // Medicaid
+          &.menu-item--cat-142 > a::before {
+            background-image: url('/wp-content/uploads/2025/08/icon-medicaid.png');
+          }
+
+          // Healthcare Costs
+          &.menu-item--cat-592 > a::before {
+            background-image: url('/wp-content/uploads/2025/08/icon-healthcare-costs.png');
+          }
+
+          // Medicare
+          &.menu-item--cat-3090 > a::before {
+            background-image: url('/wp-content/uploads/2025/08/icon-medicare.png');
+          }
+
+          // Health News & Analysis
+          &.menu-item--cat-3048 > a::before {
+            background-image: url('/wp-content/uploads/2025/08/icon-news.png');
+          }
+
+          // Private & Alternative Health Plans
+          &.menu-item--cat-3091 > a::before {
+            background-image: url('/wp-content/uploads/2025/08/icon-private-plans.png');
+          }
+
+          &.menu-item--all-authors > a::before {
+            background-image: url('/wp-content/uploads/2025/08/icon-authors.png');
           }
         }
       }

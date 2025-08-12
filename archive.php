@@ -76,7 +76,7 @@ get_header();
 	<main id="primary" class="site-main">
 
 
-		<section class="image-with-text image-with-text--right">
+		<section class="image-with-text image-with-text--right ice-swoop">
 			<div class="container">
 				<div class="image-with-text__inner">
 

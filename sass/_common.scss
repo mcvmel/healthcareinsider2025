@@ -1,4 +1,44 @@
 // layout
+.l-screen-reader,
+.l-screen-reader-text,
+.screen-reader-text,
+.screen-reader {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  z-index: 99;
+  font-size: .75rem;
+  color: black;
+  padding: 4px;
+  line-height: 1;
+
+  &.js-focus-visible,
+  &.focus-visible {
+    clip: unset;
+  }
+}
+
+.skip-link.focus-visible {
+  background-color: $deep-blue;
+  padding: 10px;
+  color: $white;
+}
+
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+.js-focus-visible .focus-visible {
+  outline: 2px solid $deep-blue !important;
+}
+
+.js-focus-visible .footer .focus-visible {
+  outline: 2px solid $white !important;
+}
+
+.js-focus-visible .site-header__utility .focus-visible,
+.js-focus-visible .footer .focus-visible {
+  outline: 2px solid $white !important;
+}
 
 .white-card {
   border-radius: $border-radius;
@@ -40,10 +80,18 @@
   font-style: normal;
   font-weight: bold;
   text-decoration: none;
+  transition: background-color $transition-time ease;
+
+  &:hover {
+    background-color: darken($sky-blue, 8%);
+  }
 
   &--secondary {
     background-color: $white;
     color: $deep-blue;
+    &:hover {
+      background-color: $light-gray;
+    }
   }
 }
 
@@ -203,10 +251,12 @@
       a {
         color: $deep-blue;
         text-decoration: none;
+
         &:hover {
           text-decoration: underline;
         }
       }
+
       &__email-icon {
         display: block;
         height: 22px;

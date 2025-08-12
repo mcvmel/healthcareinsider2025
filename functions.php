@@ -56,6 +56,9 @@ function healthcareinsider2025_setup() {
 		)
 	);
 
+
+
+
 	/*
 		* Switch default core markup for search form, comment form, and comments
 		* to output valid HTML5.
@@ -330,7 +333,6 @@ function hci_contact_card_shortcode() {
 add_shortcode('contact_card', 'hci_contact_card_shortcode');
 
 
-
 /**
  * Implement the Custom Header feature.
  */
@@ -356,5 +358,77 @@ require get_template_directory() . '/inc/customizer.php';
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
+}
+
+
+class HCI_Primary_Walker extends Walker_Nav_Menu {
+
+	public function start_lvl( &$output, $depth = 0, $args = null ) {
+		$indent  = str_repeat("\t", $depth);
+		$output .= "\n$indent<ul class=\"sub-menu\">\n";
+	}
+
+	public function end_lvl( &$output, $depth = 0, $args = null ) {
+		$indent  = str_repeat("\t", $depth);
+		$output .= "$indent</ul>\n";
+	}
+
+	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+		$classes   = empty( $item->classes ) ? [] : (array) $item->classes;
+		$is_primary = ( isset($args->theme_location) && $args->theme_location === 'primary' );
+		$is_cat     = ( $item->type === 'taxonomy' && $item->object === 'category' );
+
+		// Add our custom classes if it's a category in the PRIMARY menu
+		if ( $is_primary && $is_cat ) {
+			$classes[] = 'menu-item--is-category';
+			$classes[] = 'menu-item--cat-' . (int) $item->object_id;
+		}
+
+		$class_names = implode( ' ', array_map( 'sanitize_html_class', $classes ) );
+		$class_attr  = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+
+		$output .= '<li' . $class_attr . '>';
+
+		// Build <a> attributes
+		$atts = [];
+		if ( ! empty( $item->attr_title ) ) $atts['title'] = $item->attr_title;
+		if ( ! empty( $item->target ) )     $atts['target'] = $item->target;
+		if ( ! empty( $item->xfn ) )        $atts['rel'] = $item->xfn;
+		if ( ! empty( $item->url ) )        $atts['href'] = $item->url;
+
+		// Add data-* if category
+		if ( $is_primary && $is_cat ) {
+			$atts['data-taxonomy'] = 'category';
+			$atts['data-term-id']  = (string) $item->object_id;
+			$atts['data-term-slug']= (string) get_term_field( 'slug', (int) $item->object_id, 'category' );
+		}
+
+		// aria-current if current item
+		if ( in_array( 'current-menu-item', $classes, true ) ) {
+			$atts['aria-current'] = 'page';
+		}
+
+		$attributes = '';
+		foreach ( $atts as $attr => $value ) {
+			if ( $value === '' ) continue;
+			$value       = ( $attr === 'href' ) ? esc_url( $value ) : esc_attr( $value );
+			$attributes .= ' ' . $attr . '="' . $value . '"';
+		}
+
+		$title = apply_filters( 'the_title', $item->title, $item->ID );
+		$title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
+
+		$item_output  = $args->before ?? '';
+		$item_output .= '<a' . $attributes . '>';
+		$item_output .= ($args->link_before ?? '') . $title . ($args->link_after ?? '');
+		$item_output .= '</a>';
+		$item_output .= $args->after ?? '';
+
+		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+	}
+
+	public function end_el( &$output, $item, $depth = 0, $args = null ) {
+		$output .= "</li>\n";
+	}
 }
 

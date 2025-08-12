@@ -26,10 +26,18 @@
     <div class="container">
         <div class="latest-posts__grid">
             <?php
+            // Get excluded category IDs
+            $excluded_cats = [
+                get_cat_ID('Uncategorized'),
+                get_cat_ID('Healthcare Guides')
+            ];
+
             $latest_posts = new WP_Query([
                 'post_type' => 'post',
-                'posts_per_page' => 9
+                'posts_per_page' => 9,
+                'category__not_in' => $excluded_cats
             ]);
+
             if ($latest_posts->have_posts()):
                 while ($latest_posts->have_posts()): $latest_posts->the_post();
                     ?>
@@ -41,8 +49,8 @@
                             if ($category):
                                 ?>
                                 <span class="article-card__image__category">
-                                <?php echo esc_html($category[0]->name); ?>
-                            </span>
+                                    <?php echo esc_html($category[0]->name); ?>
+                                </span>
                             <?php endif; ?>
                         </a>
                         <div class="article-card__content">

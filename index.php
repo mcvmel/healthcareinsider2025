@@ -23,7 +23,7 @@ get_header();
 <main id="primary" class="site-main">
 
 	<!-- Generic hero (no category/term usage) -->
-	<section class="image-with-text image-with-text--right">
+	<section class="image-with-text image-with-text--right ice-swoop">
 		<div class="container">
 			<div class="image-with-text__inner">
 
@@ -79,7 +79,7 @@ get_header();
 				<div class="archive-content__post-content">
 					<?php if (have_posts()) : ?>
 						<?php while (have_posts()) : the_post(); ?>
-							<article class="article-card">
+							<article class="article-card article-card--long">
 								<a href="<?php the_permalink(); ?>" class="article-card__image">
 									<?php the_post_thumbnail('medium'); ?>
 									<?php
