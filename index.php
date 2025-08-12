@@ -76,6 +76,13 @@ get_header();
 					</div>
 				</div>
 
+				<?php
+				// Modify main query to exclude categories 3095 and 198
+				query_posts(array_merge($wp_query->query, array(
+					'cat' => '-3095,-198'
+				)));
+				?>
+
 				<div class="archive-content__post-content">
 					<?php if (have_posts()) : ?>
 						<?php while (have_posts()) : the_post(); ?>

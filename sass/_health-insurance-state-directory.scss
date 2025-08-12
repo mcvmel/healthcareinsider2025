@@ -4,11 +4,12 @@
     padding: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 100px;
 
     &__item {
-      height: 40px;
-      width: 40px;
+      height: auto;
+      width: auto;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -26,6 +27,7 @@
 .state-links {
   position: relative;
   margin-bottom: 80px;
+
   &__links {
     margin: 0 auto;
     padding: 0;
@@ -40,18 +42,20 @@
     overflow: hidden;
     opacity: 0;
     transition: opacity $transition-time ease;
+    flex-wrap: wrap;
 
     &.open {
       opacity: 1;
       position: relative;
-      max-height: 400px;
+      max-height: 600px;
     }
 
     li {
       margin: 0 0 15px 0;
-      flex-basis: 45%;
+      flex-basis: 20%;
       list-style: none;
       text-align: center;
+
       a {
         text-transform: capitalize;
         font-size: 1.125rem;
