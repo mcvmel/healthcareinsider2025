@@ -115,6 +115,11 @@
   padding-bottom: 80px;
   position: relative;
 
+  @media (max-width: $tablet-small) {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+  }
+
   &:before {
     content: '';
     max-height: 900px;
@@ -137,6 +142,8 @@
   &__header{
     margin: 40px auto;
     text-align: center;
+    z-index: 1;
+    position: relative;
   }
 
   &__grid {
@@ -144,5 +151,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 60px 30px;
+    @media (max-width: $tablet-small) {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 30px;
+    }
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+    }
   }
 }

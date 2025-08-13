@@ -1,6 +1,10 @@
 .latest-posts {
   position: relative;
 
+  @media (max-width: $tablet-large) {
+    overflow: hidden;
+  }
+
   &:before {
     content: '';
     height: 60%;
@@ -17,6 +21,13 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 50px;
+      @media (max-width: $tablet-small) {
+        margin-bottom: 40px;
+      }
+      @media (max-width: $mobile) {
+        flex-direction: column;
+      }
+
       span {
         margin: 0;
       }
@@ -58,11 +69,18 @@
       &.slick-next {
         right: 0;
         background-image: url('static/images/next-arrow.png');
+        @media (max-width: $tablet-large) {
+          right: 30px;
+        }
       }
 
       &.slick-prev {
         left: 0;
         background-image: url('static/images/prev-arrow.png');
+
+        @media (max-width: $tablet-large) {
+          left: 30px;
+        }
       }
     }
 
@@ -91,6 +109,10 @@
     display: block;
     position: relative;
     overflow: hidden;
+
+    @media (max-width: $tablet-small) {
+      height: 140px;
+    }
 
     img {
       position: absolute;
@@ -126,8 +148,9 @@
         align-items: center;
         gap: 4px;
         color: $deep-blue;
+
         img {
-          all:unset;
+          all: unset;
           height: 16px;
           width: auto;
         }
@@ -136,6 +159,14 @@
 
     &--hc-guide {
       height: 436px;
+
+      @media (max-width: $tablet-large) {
+        height: 300px;
+      }
+
+      @media (max-width: $mobile) {
+        height: 460px;
+      }
     }
   }
 
@@ -144,6 +175,10 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+
+    @media (max-width: $tablet-large) {
+      padding: 15px;
+    }
 
     &__date {
       font-size: 0.875rem;
@@ -165,6 +200,10 @@
       text-decoration: none;
       color: $deep-blue;
       margin: 24px 0;
+      @media (max-width: $tablet-small) {
+        font-size: 1.2rem;
+        line-height: 1.1;
+      }
 
     }
 

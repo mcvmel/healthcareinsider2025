@@ -2,6 +2,9 @@
   &--left {
     .image-with-text__inner {
       grid-template-columns: 4fr 8fr;
+      @media (max-width: $mobile) {
+        grid-template-columns: 1fr;
+      }
     }
   }
 
@@ -10,6 +13,11 @@
       grid-template-columns: 4fr 8fr;
       direction: rtl;
       grid-auto-flow: dense;
+      @media (max-width: $mobile) {
+        grid-template-columns: 1fr;
+        direction: unset;
+        grid-auto-flow: unset;
+      }
 
       .image-with-text__inner__content {
         text-align: left;
@@ -17,6 +25,10 @@
 
         ol, ul {
           margin: 40px;
+          @media (max-width: $mobile) {
+            margin: 20px;
+            padding: 0 0 0 20px;
+          }
 
           li {
             margin: 0 0 15px 0;
@@ -61,6 +73,9 @@
           line-height: 100%;
           letter-spacing: -0.01125rem;
           font-family: $primary-font-medium;
+          @media (max-width: $tablet-small) {
+            font-size: 1rem;
+          }
         }
       }
     }

@@ -47,26 +47,27 @@ get_header();
 			<div class="archive-content">
 
 				<div class="archive-content__filter">
-					<span class="small-heading">Categories</span>
-					<ul class="archive-content__filter__ul" data-simplebar data-simplebar-auto-hide="false">
-						<?php
-						$idx_categories = get_categories([
-							'orderby'     => 'name',
-							'order'       => 'ASC',
-							'hide_empty'  => false, // set true to show only categories with posts
-						]);
+					<div>
+						<span class="small-heading">Categories</span>
+						<ul class="archive-content__filter__ul" data-simplebar data-simplebar-auto-hide="false">
+							<?php
+							$idx_categories = get_categories([
+								'orderby'     => 'name',
+								'order'       => 'ASC',
+								'hide_empty'  => false, // set true to show only categories with posts
+							]);
 
-						foreach ($idx_categories as $idx_cat) :
-							$idx_cat_link = get_category_link($idx_cat->term_id);
-							?>
-							<li>
-								<a href="<?php echo esc_url($idx_cat_link); ?>">
-									<?php echo esc_html($idx_cat->name); ?>
-								</a>
-							</li>
-						<?php endforeach; ?>
-					</ul>
-
+							foreach ($idx_categories as $idx_cat) :
+								$idx_cat_link = get_category_link($idx_cat->term_id);
+								?>
+								<li>
+									<a href="<?php echo esc_url($idx_cat_link); ?>">
+										<?php echo esc_html($idx_cat->name); ?>
+									</a>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+					</div>
 					<div class="archive-content__filter__download">
 						<span class="small-heading">Searching For Health Plans?</span>
 						<p>Explore ACA Marketplace or Short-Term Medical Health Plans</p>

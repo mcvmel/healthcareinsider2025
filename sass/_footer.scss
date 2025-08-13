@@ -2,12 +2,24 @@
   padding-top: 80px;
   position: relative;
 
+  @media (max-width: $tablet-small) {
+    padding-top: 40px;
+  }
+
   &__inner {
     position: relative;
     padding: 48px;
     border-radius: $border-radius;
     background: $peach-to-sunrise;
     border: 2px solid $white;
+
+    @media (max-width: $tablet-small) {
+      padding: 30px;
+    }
+
+    @media (max-width: $mobile) {
+      padding: 20px 20px 0 20px;
+    }
 
     &:after {
       position: absolute;
@@ -20,11 +32,31 @@
       background-repeat: no-repeat;
       background-image: url('static/images/happy-family-compressed.png');
       background-position: top center;
+      @media (max-width: $tablet-small) {
+        width: 40%;
+        background-position: bottom center;
+      }
+      @media (max-width: $mobile) {
+        width: 100%;
+        top: unset;
+        right: unset;
+        height: 300px;
+        position: relative;
+        display: block;
+
+      }
     }
 
     &__left {
       max-width: 640px;
       width: 100%;
+
+      @media (max-width: $tablet-small) {
+        max-width: 60%;
+      }
+      @media (max-width: $mobile) {
+        max-width: 100%;
+      }
 
       &__text {
         a {
@@ -38,6 +70,7 @@
 
       &__disclaimer {
         font-size: 1rem;
+
         a {
           color: $deep-blue;
         }
@@ -50,6 +83,10 @@
 .footer {
   background-color: $deep-blue;
   padding: 80px 0;
+
+  @media (max-width: $tablet-small) {
+    padding: 40px 0;
+  }
 
   * {
     color: $white;
@@ -70,10 +107,27 @@
     align-items: center;
     justify-content: space-between;
 
+    @media (max-width: $tablet-small) {
+      grid-template-columns: 1fr;
+      grid-gap: 30px;
+    }
+
     &__logo {
+
+      a {
+        display: block;
+      }
+
+      @media (max-width: $tablet-small) {
+        text-align: center;
+      }
+
       img {
         max-width: 280px;
         height: auto;
+        @media (max-width: $mobile) {
+          max-width: 220px;
+        }
       }
     }
 
@@ -82,6 +136,10 @@
       align-items: center;
       justify-content: center;
       grid-gap: 30px;
+
+      @media (max-width: $mobile) {
+        flex-direction: column;
+      }
 
       &__phone {
         a {
@@ -112,6 +170,9 @@
         display: flex;
         flex-direction: row;
         grid-gap: 15px;
+        @media (max-width: $mobile) {
+          grid-gap: 30px;
+        }
 
         a {
           display: inline-block;
@@ -132,6 +193,11 @@
     justify-content: space-between;
     margin: 80px 0;
 
+    @media (max-width: $tablet-small) {
+      grid-template-columns: 1fr;
+      grid-gap: 60px;
+    }
+
     &__col {
       &__title {
         font-family: $primary-font-medium;
@@ -139,6 +205,13 @@
         font-style: normal;
         font-weight: 600;
         line-height: 1.5rem;
+        @media (max-width: $tablet-large) {
+          font-size: 1.1rem;
+          line-height: 1.1;
+        }
+        @media (max-width: $tablet-small) {
+          text-align: center;
+        }
       }
 
       ul {
@@ -149,13 +222,27 @@
         &.footer-3 {
           display: grid;
           grid-template-columns: minmax(0px, 200px) max-content;
-
           grid-gap: 30px;
+          @media (max-width: $tablet-large) {
+            grid-gap: 15px;
+          }
+          @media (max-width: $tablet-small) {
+            grid-template-columns: 1fr;
+            align-items: center;
+            justify-content: center;
+            grid-gap: 0;
+          }
         }
 
         li {
           list-style: none;
           margin: 0 0 15px;
+          @media (max-width: $tablet-large) {
+            margin: 0 0 10px;
+          }
+          @media (max-width: $tablet-small) {
+            text-align: center;
+          }
 
           a {
             text-decoration: none;
@@ -164,6 +251,11 @@
             font-weight: 400;
             line-height: 1;
             letter-spacing: -0.01125rem;
+            @media (max-width: $tablet-large) {
+              font-size: 1rem;
+              display: block;
+              padding: 10px;
+            }
 
           }
         }
@@ -174,19 +266,32 @@
   &__legal {
     display: grid;
     grid-template-columns: auto auto;
+    @media (max-width: $tablet-small) {
+      grid-template-columns: 1fr;
+    }
 
     &__links {
+      @media (max-width: $tablet-small) {
+        text-align: center;
+      }
+
       p {
         font-size: 1.125rem;
         font-style: normal;
         font-weight: 400;
         line-height: 120%; /* 1.35rem */
         letter-spacing: -0.01125rem;
+        @media (max-width: $tablet-large) {
+          font-size: 1rem;
+        }
       }
     }
 
     &__copyright {
       text-align: right;
+      @media (max-width: $tablet-small) {
+        text-align: center;
+      }
 
       p {
         font-size: 1.125rem;
@@ -194,6 +299,9 @@
         font-weight: 400;
         line-height: 120%; /* 1.35rem */
         letter-spacing: -0.01125rem;
+        @media (max-width: $tablet-large) {
+          font-size: 1rem;
+        }
       }
     }
   }
@@ -202,6 +310,11 @@
     margin-top: 80px;
     border-top: 1px solid $white;
     padding-top: 80px;
+
+    @media (max-width: $tablet-small) {
+      margin-top: 40px;
+      padding-top: 40px;
+    }
 
     p {
       font-size: 0.875rem;

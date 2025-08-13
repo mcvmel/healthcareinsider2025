@@ -1,6 +1,9 @@
 section.archive-content-container {
   margin-top: 60px;
   background: $ice-to-catskill;
+  @media (max-width: $tablet-small) {
+    margin-top: 40px;
+  }
 }
 
 .archive-content {
@@ -11,10 +14,30 @@ section.archive-content-container {
   padding-bottom: 80px;
   margin: 0 0 80px;
 
+  @media (max-width: $tablet-small) {
+    grid-template-columns: 1fr;
+    padding-bottom: 40px;
+    margin: 0 0 40px;
+    grid-gap: 30px;
+    align-items: start;
+  }
+
   &__filter {
     position: sticky;
     top: 40px;
     height: 86vh;
+
+    @media (max-width: $tablet-small) {
+      position: relative;
+      height: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      top: 0;
+    }
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+      grid-gap: 30px;
+    }
 
     .simplebar-content {
       @media (max-width: $mobile) {
@@ -47,6 +70,11 @@ section.archive-content-container {
       height: 280px;
       overflow-y: scroll;
 
+      @media (max-width: $tablet-small) {
+        height: 240px;
+        margin: 20px 0 0;
+      }
+
       li {
         list-style: none;
         font-size: 1rem;
@@ -69,6 +97,9 @@ section.archive-content-container {
       border-radius: $border-radius-small;
       position: relative;
       margin-top: 30px;
+      @media (max-width: $tablet-small) {
+        margin: 0;
+      }
 
       .btn-container {
         margin: 10px 0;
@@ -189,13 +220,26 @@ section.archive-content-container {
     grid-template-columns: 1fr;
     grid-gap: 60px;
 
+    @media (max-width: $tablet-small) {
+      grid-gap: 30px;
+    }
+
     .article-card--long {
       display: grid;
       grid-template-columns: 308px auto;
 
+      @media (max-width: $mobile) {
+        grid-template-columns: 1fr;
+      }
+
       .article-card__image {
         height: 100%;
         width: 308px;
+
+        @media (max-width: $mobile) {
+          height: 140px;
+          width: auto;
+        }
       }
     }
   }
@@ -207,4 +251,8 @@ section.archive-content-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 60px 30px;
+  @media (max-width: $mobile) {
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+  }
 }

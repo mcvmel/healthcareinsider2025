@@ -9,10 +9,26 @@ section.page-content-container {
   position: relative;
   padding: 0 0;
 
+  @media (max-width: $tablet-small) {
+    grid-template-columns: 1fr;
+    padding-bottom: 40px;
+    margin: 0 0 40px;
+    grid-gap: 30px;
+    align-items: start;
+  }
+
   &__filter {
     position: sticky;
     top: 40px;
     height: 86vh;
+
+    @media (max-width: $tablet-small) {
+      position: relative;
+      height: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      top: 0;
+    }
 
     .simplebar-content {
       @media (max-width: $mobile) {
@@ -44,6 +60,10 @@ section.page-content-container {
       padding: 0 0 0 30px;
       height: 100%;
       overflow-y: scroll;
+
+      @media (max-width: $tablet-small) {
+        height: 240px;
+      }
 
       li {
         list-style: none;
@@ -151,6 +171,14 @@ section.page-content-container {
     grid-template-columns: 1fr;
     grid-gap: 24px;
 
+    p,ol,ul {
+      a {
+        @media (max-width: $mobile) {
+          word-break: break-all;
+        }
+      }
+    }
+
 
     section + section {
       margin-top: 20px;
@@ -164,6 +192,16 @@ section.page-content-container {
       font-size: 2rem;
       font-style: normal;
       font-weight: 400;
+
+      @media (max-width: $tablet-large) {
+        font-size: 2rem;
+        line-height: 1.1;
+      }
+
+      @media (max-width: $mobile) {
+        font-size: 1.25rem;
+        line-height: 1.1;
+      }
     }
 
     h3, .h3, {
@@ -174,6 +212,14 @@ section.page-content-container {
       line-height: 1.5rem; /* 109.091% */
       display: block;
       margin-bottom: 10px;
+      @media (max-width: $mobile) {
+        font-size: 1.25rem;
+        line-height: 1.1;
+      }
+    }
+
+    ol, ul {
+      padding: 0 0 0 20px;
     }
 
 

@@ -81,11 +81,7 @@ if (!$author_image_url) {
 
                 <div class="author-hero__right">
                     <span class="author-hero__right__eyebrow">About the author</span>
-                    <p class="author-hero__right__name">
-                        <a href="<?php echo esc_url(get_author_posts_url($author_id)); ?>">
-                            <?php echo esc_html($author_name); ?>
-                        </a>
-                    </p>
+                    <p class="author-hero__right__name"><?php echo esc_html($author_name); ?></p>
 
                     <?php if (!empty($author_headline)) : ?>
                         <p><?php echo esc_html($author_headline); ?></p>

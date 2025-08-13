@@ -2,6 +2,11 @@
   position: relative;
   padding-bottom: 80px;
   margin-bottom: 80px;
+  @media (max-width: $tablet-small) {
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+  }
+
   &:before {
     content: '';
     height: 540px;
@@ -28,9 +33,24 @@
       justify-content: center;
       gap: 40px;
 
+      @media (max-width: $tablet-small) {
+        gap: 30px;
+      }
+
+      @media (max-width: $mobile) {
+        justify-content: center;
+        grid-gap: 30px 60px;
+      }
+
+
       &__reviewer {
         flex: 1 1 calc(25% - 40px);
         max-width: calc(25% - 40px);
+
+        @media (max-width: $mobile) {
+          flex: 1 1 calc(50% - 40px);
+          max-width: calc(50% - 40px);
+        }
 
 
         &__image {
@@ -43,6 +63,10 @@
           outline: 5px solid $growing-green;
           margin: 0 auto 30px;
           overflow: hidden;
+          @media (max-width: $tablet-large) {
+            height: 140px;
+            width: 140px;
+          }
 
 
           img {

@@ -57,7 +57,13 @@ $phone_number = get_field('footer_options_phone_number', 'option');
                     </a>
                 </div>
 
+                <button class="site-header__main__burger js-open-mobile-menu">
+                    <img src="<?php echo get_template_directory_uri(); ?>/static/images/icon-menu.png"
+                         alt="Open mobile menu">
+                </button>
+
                 <nav class="site-header__main__nav" role="navigation">
+                    <button class="site-header__main__nav__button js-close-mobile-menu"></button>
                     <?php
                     wp_nav_menu([
                         'theme_location' => 'primary',

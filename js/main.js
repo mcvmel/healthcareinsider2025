@@ -377,8 +377,42 @@ jQuery( document ).ready( function( $ ) {
 			speed: 500,
 			pauseOnHover: true,
 			useAutoplayToggleButton: false,
-			slidesToShow: 4,
-			slidesToScroll: 1
+			slidesToShow: 6,
+			slidesToScroll: 1,
+			responsive: [
+				{
+					breakpoint: 1600,
+					settings: {
+						slidesToShow: 4,
+						slidesToScroll: 1,
+						infinite: false,
+						dots: false
+					}
+				},
+				{
+					breakpoint: 1100,
+					settings: {
+						slidesToShow: 3,
+						slidesToScroll: 1,
+						infinite: false,
+						dots: false
+					}
+				},
+				{
+					breakpoint: 990,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 1,
+					}
+				},
+				{
+					breakpoint: 520,
+					settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1,
+					}
+				}
+			]
 		});
 	}
 
@@ -604,6 +638,17 @@ jQuery( document ).ready( function( $ ) {
 	$('.js-close-search').on('click', function(e) {
 		e.preventDefault();
 		$('.search-overlay').removeClass('show');
+	});
+
+
+	$('.js-open-mobile-menu').on('click', function(e) {
+		e.preventDefault();
+		$('.site-header__main__nav').addClass('open');
+	});
+
+	$('.js-close-mobile-menu').on('click', function(e) {
+		e.preventDefault();
+		$('.site-header__main__nav').removeClass('open');
 	});
 
 

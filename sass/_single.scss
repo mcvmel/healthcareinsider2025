@@ -6,6 +6,11 @@
   align-items: center;
   justify-content: center;
 
+  @media (max-width: $tablet-small) {
+    padding: 40px 0;
+    min-height: 200px;
+  }
+
   &__inner {
     max-width: 890px;
     margin: 0 auto;
@@ -26,6 +31,9 @@
         letter-spacing: -0.01125rem;
         color: $deep-blue;
         font-family: $primary-font-medium;
+        @media (max-width: $mobile) {
+          font-size: 1rem;
+        }
       }
 
       img {
@@ -41,6 +49,9 @@
         letter-spacing: -0.01125rem;
         font-family: $primary-font;
         color: $sky-blue;
+        @media (max-width: $mobile) {
+          font-size: 1rem;
+        }
       }
     }
 
@@ -55,6 +66,9 @@
       justify-content: center;
       gap: 10px;
       margin-top: 30px;
+      @media (max-width: $mobile) {
+        flex-direction: column;
+      }
 
       img {
         max-height: 28px;
@@ -122,6 +136,10 @@
 
 section.single-content-container {
   margin-top: 60px;
+
+  @media (max-width: $tablet-small) {
+    margin-top: 40px;
+  }
 }
 
 .single-content {
@@ -131,10 +149,31 @@ section.single-content-container {
   position: relative;
   padding: 0 0;
 
+  @media (max-width: $tablet-small) {
+    grid-template-columns: 1fr;
+    padding-bottom: 40px;
+    margin: 0 0 40px;
+    grid-gap: 30px;
+  }
+
   &__filter {
     position: sticky;
     top: 40px;
     height: 90vh;
+
+    @media (max-width: $tablet-small) {
+      position: relative;
+      height: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      top: 0;
+      align-items: start;
+    }
+
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+      grid-gap: 30px;
+    }
 
     .simplebar-content {
       @media (max-width: $mobile) {
@@ -166,6 +205,11 @@ section.single-content-container {
       padding: 0 0 0 30px;
       height: 340px;
       overflow-y: scroll;
+
+      @media (max-width: $tablet-small) {
+        height: 240px;
+        margin: 20px 0 0;
+      }
 
       li {
         list-style: none;
@@ -266,6 +310,14 @@ section.single-content-container {
         font-weight: bold;
         text-decoration: none;
         cursor: pointer;
+
+        @media (max-width: $tablet-large) {
+          font-size: 1rem;
+          padding: 15px 20px;
+          min-height: 0 !important;
+          line-height: 1 !important;
+          width: auto !important;
+        }
       }
     }
   }
@@ -274,6 +326,14 @@ section.single-content-container {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 24px;
+
+    p,ol,ul {
+      a {
+        @media (max-width: $mobile) {
+          word-break: break-all;
+        }
+      }
+    }
 
 
     section + section {
@@ -288,6 +348,15 @@ section.single-content-container {
       font-size: 2rem;
       font-style: normal;
       font-weight: 400;
+      @media (max-width: $tablet-large) {
+        font-size: 2rem;
+        line-height: 1.1;
+      }
+
+      @media (max-width: $mobile) {
+        font-size: 1.25rem;
+        line-height: 1.1;
+      }
     }
 
     h3, .h3, {
@@ -298,6 +367,15 @@ section.single-content-container {
       line-height: 1.5rem; /* 109.091% */
       display: block;
       margin-bottom: 10px;
+
+      @media (max-width: $mobile) {
+        font-size: 1.25rem;
+        line-height: 1.1;
+      }
+    }
+
+    ol, ul {
+      padding: 0 0 0 20px;
     }
 
     img {
@@ -310,6 +388,10 @@ section.single-content-container {
 
     &__credits {
       display: flex;
+      @media (max-width: $mobile) {
+        flex-direction: column;
+        grid-gap: 30px;
+      }
 
       &__column {
         flex: 1;
@@ -325,6 +407,7 @@ section.single-content-container {
             border: 2.25px solid $white;
             outline: 2.25px solid $growing-green;
             margin: 0 30px 0 0;
+            max-width: none;
           }
 
           &__info {
@@ -360,6 +443,10 @@ section.single-content-container {
     &__intro {
       padding: 30px;
 
+      @media (max-width: $mobile) {
+        padding: 20px;
+      }
+
       &__image {
         background: $ice-to-catskill;
         border: 1px solid $catskill-white;
@@ -373,6 +460,12 @@ section.single-content-container {
           margin: 0 auto;
           display: block;
           padding: 56px 30px;
+          @media (max-width: $mobile) {
+            max-width: 200px;
+          }
+          @media (max-width: $mobile) {
+            padding: 30px;
+          }
         }
       }
 
@@ -391,6 +484,9 @@ section.single-content-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 40px 60px;
+        @media (max-width: $mobile) {
+          grid-template-columns: 1fr;
+        }
 
         &__item {
 
@@ -528,11 +624,19 @@ section.single-content-container {
         display: block;
         margin-bottom: 10px;
       }
+
+      ol, ul {
+        padding: 0 0 0 20px;
+      }
     }
 
 
     article {
       margin-top: 40px;
+
+      @media (max-width: $mobile) {
+        margin-top: 0;
+      }
 
       p,
       ul,
@@ -549,6 +653,12 @@ section.single-content-container {
       figure {
         margin: 40px 0;
         padding: 0;
+
+        @media (max-width: $mobile) {
+          margin: 12px 0;
+          max-width: 345px;
+          overflow: scroll;
+        }
       }
 
       table {
@@ -556,21 +666,37 @@ section.single-content-container {
         border-collapse: collapse;
         font-size: 16px;
 
+        @media (max-width: $mobile) {
+          font-size: 13px;
+          table-layout: fixed;
+          min-width: 560px; // allow inner horizontal scroll
+        }
+
         th,
         td {
           padding: 0.75rem;
           border: 1px solid $light-gray;
           text-align: left;
           vertical-align: top;
+
+          @media (max-width: $mobile) {
+            padding: 0.4rem;
+            word-break: break-word;
+            hyphens: auto;
+          }
         }
 
         thead {
           background-color: $ice-white;
           font-weight: bold;
+          // (no mobile change needed)
         }
 
-        tr:nth-child(even) {
-          background-color: $light-gray;
+        tr {
+          &:nth-child(even) {
+            background-color: $light-gray;
+            // (no mobile change needed)
+          }
         }
 
         a {
@@ -580,6 +706,8 @@ section.single-content-container {
           &:hover {
             text-decoration: none;
           }
+
+          // (no mobile change needed)
         }
       }
 
@@ -594,6 +722,12 @@ section.single-content-container {
       display: grid;
       grid-template-columns: 2fr 10fr;
       grid-gap: 30px;
+
+      @media (max-width: $mobile) {
+        padding: 15px;
+        grid-template-columns: 1fr;
+        grid-gap: 30px;
+      }
 
       &__left {
         &__photo {
@@ -637,6 +771,7 @@ section.single-content-container {
             max-height: 18px;
             width: auto;
             display: block;
+            margin: 0;
           }
 
           a {
@@ -648,6 +783,9 @@ section.single-content-container {
 
       &__right {
         padding-top: 20px;
+        @media (max-width: $mobile) {
+          padding-top: 0;
+        }
 
         &__eyebrow {
           font-size: 0.875rem;
@@ -701,6 +839,9 @@ section.single-content-container {
         img {
           max-height: 23px;
           width: auto;
+          @media (max-width: $tablet-small) {
+            margin: 0;
+          }
         }
       }
     }
@@ -814,7 +955,7 @@ section.single-content-container {
         padding: 20px;
         background-color: $light-gray;
         border-radius: $border-radius-small;
-        margin-bottom:40px;
+        margin-bottom: 40px;
 
         span {
           margin: 0;
@@ -828,6 +969,10 @@ section.single-content-container {
           font-style: normal;
           font-weight: 400;
           margin: 0;
+          @media (max-width: $tablet-small) {
+            font-size: 1.1rem;
+            line-height: 1.1;
+          }
         }
 
         button {
@@ -870,6 +1015,10 @@ section.single-content-container {
   position: relative;
   margin-bottom: 80px;
 
+  @media (max-width: $tablet-small) {
+    margin-bottom: 40px;
+  }
+
   &:before {
     content: '';
     height: 60%;
@@ -883,12 +1032,21 @@ section.single-content-container {
   &__header {
     text-align: center;
     margin: 0 0 50px 0;
+    @media (max-width: $tablet-small) {
+      margin: 0 0 40px;
+    }
   }
 
   &__grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 40px;
+    @media (max-width: $tablet-small) {
+      grid-gap: 30px;
+    }
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+    }
 
   }
 }

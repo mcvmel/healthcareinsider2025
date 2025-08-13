@@ -3,6 +3,10 @@
   grid-template-columns: 2fr 10fr;
   grid-gap: 30px;
 
+  @media (max-width: $mobile) {
+    grid-template-columns: 1fr;
+  }
+
   &__left {
     &__photo {
       height: 220px;
@@ -13,6 +17,16 @@
       border: 3px solid $white;
       outline: 3px solid $growing-green;
       margin-bottom: 15px;
+      margin-top:15px;
+
+      @media (max-width: $tablet-large) {
+        height: 140px;
+        width: 140px;
+      }
+
+      @media (max-width: $mobile) {
+        margin-bottom: 15px;
+      }
 
       img {
         width: 100%;

@@ -46,6 +46,10 @@
   box-shadow: $box-shadow;
   transition: all $transition-time ease;
 
+  @media (max-width: $mobile) {
+    border-radius: $border-radius-small;
+  }
+
   &:hover {
     background-color: $ice-white;
   }
@@ -89,9 +93,15 @@
   &--secondary {
     background-color: $white;
     color: $deep-blue;
+
     &:hover {
       background-color: $light-gray;
     }
+  }
+
+  @media (max-width: $tablet-large) {
+    font-size: 1rem;
+    padding: 15px 20px;
   }
 }
 
@@ -107,6 +117,11 @@
   position: relative;
   overflow: hidden;
 
+  @media (max-width: $mobile) {
+    padding: 0;
+    flex-direction: column;
+  }
+
   &:before {
     content: '';
     height: 100%;
@@ -119,6 +134,10 @@
     background-position: top right;
     background-repeat: no-repeat;
     z-index: 1;
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
   }
 
   &:after {
@@ -133,11 +152,22 @@
     background-position: bottom left;
     background-repeat: no-repeat;
     z-index: 1;
+
+    @media (max-width: $mobile) {
+      position: relative;
+      height: 300px;
+      width: 100%;
+      background-position: bottom center;
+    }
   }
 
   &__inner {
     position: relative;
     z-index: 2;
+
+    @media (max-width: $mobile) {
+      padding: 20px;
+    }
 
     &__heading {
       line-height: 1.1;
@@ -148,6 +178,11 @@
       font-weight: 400;
       display: block;
       margin: 0 0 15px 0;
+
+      @media (max-width: $tablet-small) {
+        font-size: 1.25rem;
+        line-height: 1.1;
+      }
     }
 
     p {
@@ -174,6 +209,11 @@
   position: relative;
   overflow: hidden;
 
+  @media (max-width: $mobile) {
+    padding: 0;
+    flex-direction: column;
+  }
+
   &:before {
     content: '';
     height: 100%;
@@ -186,6 +226,10 @@
     background-position: top right;
     background-repeat: no-repeat;
     z-index: 1;
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
   }
 
   &:after {
@@ -200,11 +244,22 @@
     background-position: bottom left;
     background-repeat: no-repeat;
     z-index: 1;
+
+    @media (max-width: $mobile) {
+      position: relative;
+      height: 300px;
+      width: 100%;
+      background-position: bottom center;
+    }
   }
 
   &__inner {
     position: relative;
     z-index: 2;
+
+    @media (max-width: $mobile) {
+      padding: 20px;
+    }
 
     &__heading {
       line-height: 1.1;
@@ -215,6 +270,11 @@
       font-weight: 400;
       display: block;
       margin: 0 0 15px 0;
+
+      @media (max-width: $tablet-small) {
+        font-size: 1.25rem;
+        line-height: 1.1;
+      }
     }
 
     p {
@@ -240,6 +300,10 @@
     display: grid;
     grid-template-columns: auto auto;
     grid-gap: 15px;
+
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+    }
 
     &__item {
       display: flex;

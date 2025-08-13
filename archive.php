@@ -106,25 +106,27 @@ get_header();
 			<div class="container">
 				<div class="archive-content">
 					<div class="archive-content__filter">
-						<span class="small-heading">More Categories</span>
-						<ul class="archive-content__filter__ul" data-simplebar data-simplebar-auto-hide="false">
-							<?php
-							$categories = get_categories([
-								'orderby' => 'name',
-								'order'   => 'ASC',
-								'hide_empty' => false, // set to true if you only want categories with posts
-							]);
+						<div>
+							<span class="small-heading">More Categories</span>
+							<ul class="archive-content__filter__ul" data-simplebar data-simplebar-auto-hide="false">
+								<?php
+								$categories = get_categories([
+									'orderby' => 'name',
+									'order'   => 'ASC',
+									'hide_empty' => false, // set to true if you only want categories with posts
+								]);
 
-							foreach ($categories as $cat) :
-								$cat_link = get_category_link($cat->term_id);
-								?>
-								<li>
-									<a href="<?php echo esc_url($cat_link); ?>">
-										<?php echo esc_html($cat->name); ?>
-									</a>
-								</li>
-							<?php endforeach; ?>
-						</ul>
+								foreach ($categories as $cat) :
+									$cat_link = get_category_link($cat->term_id);
+									?>
+									<li>
+										<a href="<?php echo esc_url($cat_link); ?>">
+											<?php echo esc_html($cat->name); ?>
+										</a>
+									</li>
+								<?php endforeach; ?>
+							</ul>
+						</div>
 						<div class="archive-content__filter__download">
 							<span class="small-heading">Searching For Health Plans?</span>
 							<p>Explore ACA Marketplace or Short-Term Medical Health Plans</p>

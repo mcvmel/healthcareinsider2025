@@ -23,6 +23,7 @@ p, ol li, ul li {
     line-height: 1.25;
   }
 
+
   a {
     color: inherit;
   }
@@ -40,11 +41,16 @@ h1 {
 
   @media (max-width: $tablet-large) {
     font-size: 2.75rem;
-    line-height: 3.25rem;
+    line-height: 1.1;
+  }
+
+  @media (max-width: $tablet-small) {
+    font-size: 2rem;
+    line-height: 1.1;
   }
 
   @media (max-width: $mobile) {
-    font-size: 2rem;
+    font-size: 1.75rem;
     line-height: 2.5rem;
   }
 }
@@ -59,18 +65,19 @@ h2, h3, h4, h5, h6,
   color: $deep-blue;
   margin: 0 0 1.5rem 0;
 
+
   a {
     color: inherit;
   }
 
   @media (max-width: $tablet-large) {
-    font-size: 2.25rem;
-    line-height: 2.75rem;
+    font-size: 2rem;
+    line-height: 1.1;
   }
 
   @media (max-width: $mobile) {
-    font-size: 1.75rem;
-    line-height: 2.25rem;
+    font-size: 1.5rem;
+    line-height: 1.1;
   }
 }
 
@@ -96,6 +103,11 @@ strong, b {
   line-height: 1.5rem; /* 109.091% */
   display: block;
   margin-bottom: 10px;
+
+  @media (max-width: $tablet-small) {
+    font-size: 1.1rem;
+    line-height: 1.1;
+  }
 }
 
 p, ul li, ol li {

@@ -2,6 +2,12 @@
   &--small {
     .insurance-by-state__inner {
       min-height: 487px;
+      @media (max-width: $tablet-large) {
+        min-height: 300px;
+      }
+      @media (max-width: $mobile) {
+        padding: 15px;
+      }
     }
 
   }
@@ -9,12 +15,20 @@
   &--large {
     .insurance-by-state__inner {
       min-height: 685px;
+      @media (max-width: $tablet-large) {
+        min-height: 585px;
+      }
+      @media (max-width: $mobile) {
+        min-height: 400px;
+        padding: 15px;
+      }
     }
   }
 
   &__inner {
     background-image: url('static/images/options-by-state-bg-compressed.png');
     background-size: cover;
+    background-position: center;
     border-radius: $border-radius;
     position: relative;
     display: flex;
@@ -32,6 +46,10 @@
         font-style: normal;
         font-weight: 400;
         line-height: 120%; /* 1.8rem */
+
+        @media (max-width: $tablet-small) {
+          font-size: 1rem;
+        }
       }
     }
 
@@ -42,6 +60,9 @@
       align-items: center;
       gap: 6px;
       justify-content: flex-start;
+      @media (max-width: $mobile) {
+        flex-direction: column;
+      }
       * {
         color: $white;
       }

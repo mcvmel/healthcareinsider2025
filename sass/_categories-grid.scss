@@ -9,9 +9,26 @@
       gap: 40px;
       justify-content: center;
 
+      @media (max-width: $tablet-small) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 30px;
+      }
+
+      @media (max-width: $mobile) {
+        grid-template-columns: 1fr;
+      }
+
       &__item {
         flex: 1 1 calc((100% - 120px) / 4); // 4 items per row with 40px gap x 3
         max-width: calc((100% - 120px) / 4);
+
+        @media (max-width: $tablet-small) {
+          flex: unset;
+          max-width: unset;
+          width: 100%;
+          margin: 0;
+        }
 
 
         &__icon {
@@ -25,6 +42,17 @@
             height: 100%;
             width: auto;
           }
+
+          @media (max-width: $tablet-small) {
+            width: 56px;
+            height: 56px;
+            margin: 0;
+          }
+
+          @media (max-width: $mobile) {
+            width: 42px;
+            height: 42px;
+          }
         }
 
         &__name {
@@ -36,6 +64,17 @@
           font-style: normal;
           font-weight: 400;
           line-height: 1.5rem;
+
+          @media (max-width: $tablet-large) {
+            font-size: 1.2rem;
+            line-height: 1.1;
+          }
+          @media (max-width: $tablet-small) {
+            text-align: left;
+          }
+          @media (max-width: $mobile) {
+            font-size: 1.1rem;
+          }
         }
 
         a {
@@ -44,6 +83,24 @@
           padding: 30px;
           min-height: 160px;
           text-decoration: none;
+          @media (max-width: $tablet-large) {
+            padding: 15px;
+          }
+
+          @media (max-width: $tablet-small) {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            grid-gap: 15px;
+            min-height: 100px;
+            margin: 0;
+          }
+
+          @media (max-width: $mobile) {
+            padding: 10px;
+            min-height: 60px;
+          }
 
           * {
             text-decoration: none;

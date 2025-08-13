@@ -186,10 +186,11 @@ get_header();
             <div class="container">
                 <div class="single-content">
                     <div class="single-content__filter">
-                        <span class="small-heading">In This Article</span>
-                        <ul id="SingleContentFilterUl" class="single-content__filter__ul" data-simplebar
-                            data-simplebar-auto-hide="false">
-                        </ul>
+                        <div><span class="small-heading">In This Article</span>
+                            <ul id="SingleContentFilterUl" class="single-content__filter__ul" data-simplebar
+                                data-simplebar-auto-hide="false">
+                            </ul></div>
+
                         <div class="single-content__filter__download">
                             <span class="small-heading">Free Downloadable Guide</span>
                             <?php echo do_shortcode('[gravityform id="8" title="false"]'); ?>
@@ -515,16 +516,17 @@ get_header();
                         </section>
 
 
-                        <section class="single-content__post-content__citations">
-                            <div class="single-content__post-content__citations__header">
-                                <span class="h3">Article Sources</span>
-                                <button class="js-open-citations"></button>
-                            </div>
-                            <div class="single-content__post-content__citations__inner">
-                                <?php echo $citations ?>
-                            </div>
-                        </section>
-
+                        <?php if (!empty($citations)) : ?>
+                            <section class="single-content__post-content__citations">
+                                <div class="single-content__post-content__citations__header">
+                                    <span class="h3">Article Sources</span>
+                                    <button class="js-open-citations"></button>
+                                </div>
+                                <div class="single-content__post-content__citations__inner">
+                                    <?php echo $citations ?>
+                                </div>
+                            </section>
+                        <?php endif; ?>
 
                     </div>
                 </div>
