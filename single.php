@@ -112,7 +112,7 @@ get_header();
 
         <section class="single-hero single-hero--search-results">
             <div class="container">
-                <div class="single-hero__inner">
+                <div class="single-hero__inner" data-aos="fade">
                     <div class="single-hero__inner__bread-crumbs">
 
                         <?php if (in_category(3049)) :
@@ -304,7 +304,7 @@ get_header();
 
 
                                 <div class="single-content__post-content__hci-rating__list">
-                                    <div class="single-content__post-content__hci-rating__list__item">
+                                    <div class="single-content__post-content__hci-rating__list__item" data-aos="fade-right" data-aos-delay="0">
         <span
             class="single-content__post-content__hci-rating__list__item__label">Coverage Breadth & Accessibility</span>
                                         <?php if ($coverage_rating !== null): ?>
@@ -317,7 +317,7 @@ get_header();
                                     </div>
 
 
-                                    <div class="single-content__post-content__hci-rating__list__item">
+                                    <div class="single-content__post-content__hci-rating__list__item" data-aos="fade-right" data-aos-delay="100">
                                         <span class="single-content__post-content__hci-rating__list__item__label">Plan Variety & Customization</span>
                                         <?php if ($variety_rating !== null): ?>
                                             <span class="single-content__post-content__hci-rating__list__item__value"
@@ -331,7 +331,7 @@ get_header();
                                     </div>
 
 
-                                    <div class="single-content__post-content__hci-rating__list__item">
+                                    <div class="single-content__post-content__hci-rating__list__item" data-aos="fade-right" data-aos-delay="200">
                                         <span class="single-content__post-content__hci-rating__list__item__label">Affordability & Value</span>
                                         <?php if ($afford_rating !== null): ?>
                                             <span class="single-content__post-content__hci-rating__list__item__value"
@@ -345,7 +345,7 @@ get_header();
                                     </div>
 
 
-                                    <div class="single-content__post-content__hci-rating__list__item">
+                                    <div class="single-content__post-content__hci-rating__list__item" data-aos="fade-right" data-aos-delay="300">
                                         <span class="single-content__post-content__hci-rating__list__item__label">Innovation & Care Quality</span>
                                         <?php if ($innovation_rating !== null): ?>
                                             <span class="single-content__post-content__hci-rating__list__item__value"
@@ -358,7 +358,7 @@ get_header();
                                     </div>
 
 
-                                    <div class="single-content__post-content__hci-rating__list__item">
+                                    <div class="single-content__post-content__hci-rating__list__item" data-aos="fade-right" data-aos-delay="400">
         <span
             class="single-content__post-content__hci-rating__list__item__label">Consumer Experience & Transparency</span>
                                         <?php if ($consumer_rating !== null): ?>
@@ -395,7 +395,7 @@ get_header();
                         endwhile; // End of the loop.
                         ?>
 
-                        <section class="single-content__post-content__bottom-author">
+                        <section class="single-content__post-content__bottom-author" data-aos="fade">
                             <div class="single-content__post-content__bottom-author__left">
 
                                 <div class="single-content__post-content__bottom-author__left__photo">
@@ -470,7 +470,7 @@ get_header();
                         <hr>
 
 
-                        <section class="single-content__post-content__share">
+                        <section class="single-content__post-content__share" data-aos="fade">
                             <span class="single-content__post-content__share__label">Share:</span>
 
                             <a class="single-content__post-content__share__link"
@@ -496,7 +496,7 @@ get_header();
 
                         </section>
 
-                        <section class="single-content__post-content__feedback h2">
+                        <section class="single-content__post-content__feedback h2" data-aos="fade">
                             <span
                                 class="single-content__post-content__feedback__heading">Was this article helpful?</span>
                             <div class="single-content__post-content__feedback__rating">
@@ -517,7 +517,7 @@ get_header();
 
 
                         <?php if (!empty($citations)) : ?>
-                            <section class="single-content__post-content__citations">
+                            <section class="single-content__post-content__citations" data-aos="fade">
                                 <div class="single-content__post-content__citations__header">
                                     <span class="h3">Article Sources</span>
                                     <button class="js-open-citations"></button>

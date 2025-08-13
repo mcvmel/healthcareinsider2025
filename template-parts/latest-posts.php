@@ -37,11 +37,12 @@
                 'posts_per_page' => 9,
                 'category__not_in' => $excluded_cats
             ]);
+            $count = 1; // start counter at 1
 
             if ($latest_posts->have_posts()):
                 while ($latest_posts->have_posts()): $latest_posts->the_post();
                     ?>
-                    <article class="article-card article-card--slide">
+                    <article class="article-card article-card--slide" data-aos="fade-left" data-aos-delay="<?php echo $count; ?>00">
                         <a href="<?php the_permalink(); ?>" class="article-card__image">
                             <?php the_post_thumbnail('medium'); ?>
                             <?php
@@ -67,6 +68,7 @@
                         </div>
                     </article>
                 <?php
+                    $count++; // increment counter
                 endwhile;
                 wp_reset_postdata();
             endif;

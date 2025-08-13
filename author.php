@@ -47,7 +47,7 @@ if (!$author_image_url) {
     <section class="ice-swoop">
         <div class="container">
 
-            <section class="author-hero">
+            <section class="author-hero" data-aos="fade">
                 <div class="author-hero__left">
                     <div class="author-hero__left__photo">
                         <img src="<?php echo esc_url($author_image_url); ?>" alt="<?php echo esc_attr($author_image_alt ?: $author_name); ?>">

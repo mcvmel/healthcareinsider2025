@@ -15,10 +15,10 @@ $authors = get_users([
     <div class="container">
         <div class="author-grid__inner">
             <?php if ($text) : ?>
-                <div class="author-grid__inner__text"><?php echo $text; ?></div>
+                <div class="author-grid__inner__text" data-aos="fade-up" data-aos-delay="100"><?php echo $text; ?></div>
             <?php endif; ?>
 
-            <div class="author-grid__inner__grid">
+            <div class="author-grid__inner__grid" data-aos="fade" data-aos-delay="300">
                 <?php foreach ($authors as $user_id) : ?>
                     <?php
                     $user_id      = (int) $user_id;

@@ -16,7 +16,7 @@ if ($card === 'yes') {
 }
 ?>
 
-<section class="simple-cta">
+<section class="simple-cta" data-aos="fade-up" data-aos-delay="100">
     <div class="simple-cta__inner<?php echo $card_classes; ?>">
         <?php if ($text) :
             echo $text;

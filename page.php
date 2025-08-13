@@ -19,7 +19,7 @@ get_header();
 
         <section class="single-hero">
             <div class="container">
-                <div class="single-hero__inner">
+                <div class="single-hero__inner" data-aos="fade">
                     <h1 class="h2"><?php the_title(); ?></h1>
                     <div class="single-hero__inner__meta">
 						<p>Update on <?php echo get_the_modified_date('F j, Y'); ?></p>

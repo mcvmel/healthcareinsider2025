@@ -6,7 +6,7 @@ $logos = get_sub_field('logos'); // ACF Gallery field
 <?php if ($logos): ?>
 	<section class="social-proof">
 		<div class="container">
-			<div class="social-proof__inner">
+			<div class="social-proof__inner" data-aos="fade" data-aos-delay="10">
 				<?php if ($label): ?>
 					<p class="social-proof__inner__label"><?php echo esc_html($label); ?></p>
 				<?php endif; ?>

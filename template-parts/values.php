@@ -9,7 +9,7 @@
                     $value_name = get_sub_field('value_name');
                     $value_definition = get_sub_field('value_definition');
                     ?>
-                    <div class="values__inner__row">
+                    <div class="values__inner__row" data-aos="fade-up" data-aos-delay="100">
                         <div class="values__inner__row__left">
                             <span class="h2"><?php echo esc_html($value_name); ?></span>
                         </div>

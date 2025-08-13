@@ -9,49 +9,63 @@
 $term = get_queried_object();
 $image = get_field('category_featured_image', 'category_' . $term->term_id);
 
+$base_url = 'https://www.healthcare.com/healthcare-insurance/survey/?utm_source=hci';
 
-$base_url = 'https://www.healthcare.com/mp2/healthcare-insurance/survey/?utm_source=hci';
+// Figure out slug source
+$slug_source = '';
+$id_suffix   = '';
 
-// Get slug for utm_medium
-$slug = '';
-if (is_singular()) {
-	$slug = get_post_field('post_name', get_post());
-} elseif (is_category() || is_tag() || is_tax()) {
-	$term = get_queried_object();
-	$slug = $term->slug;
-} elseif (is_post_type_archive()) {
-	$slug = get_post_type();
-} elseif (is_home() || is_front_page()) {
-	$slug = 'home';
+if ( is_singular() ) {
+	$slug_source = get_post_field( 'post_name', get_post() );
+	$id_suffix   = get_the_ID();
+} elseif ( is_category() || is_tag() || is_tax() ) {
+	$slug_source = $term->slug ?? '';
+	$id_suffix   = isset( $term->term_id ) ? (int) $term->term_id : '';
+} elseif ( is_post_type_archive() ) {
+	$slug_source = get_post_type();
+	$id_suffix   = abs( crc32( get_post_type() ) ); // numeric fallback
+} elseif ( is_home() || is_front_page() ) {
+	$slug_source = 'home';
+	$id_suffix   = is_front_page() ? (int) get_option( 'page_on_front' ) : (int) get_option( 'page_for_posts' );
 }
+
+// Get first four words from slug source
+$words      = preg_split( '/[^a-z0-9]+/i', (string) $slug_source, -1, PREG_SPLIT_NO_EMPTY );
+$first_four = array_slice( $words, 0, 4 );
+$base_slug  = strtolower( implode( '-', $first_four ) );
+
+if ( $base_slug === '' ) {
+	$base_slug = 'page';
+}
+
+// Combine slug + ID
+$utm_medium = $id_suffix ? "{$base_slug}-{$id_suffix}" : $base_slug;
 
 // Get archive name for utm_campaign
 $archive_name = '';
-if (is_category() || is_tag() || is_tax()) {
+if ( is_category() || is_tag() || is_tax() ) {
 	$archive_name = $term->name ?? '';
-} elseif (is_post_type_archive()) {
-	$archive_name = post_type_archive_title('', false);
-} elseif (is_home() || is_front_page()) {
+} elseif ( is_post_type_archive() ) {
+	$archive_name = post_type_archive_title( '', false );
+} elseif ( is_home() || is_front_page() ) {
 	$archive_name = 'Home';
-} elseif (is_singular()) {
+} elseif ( is_singular() ) {
 	$archive_name = get_the_title();
 }
 
 // Build UTM params
 $utm_params = [
-	'utm_medium'   => sanitize_title($slug),
-	'utm_campaign' => sanitize_title($archive_name),
+	'utm_medium'   => sanitize_title( $utm_medium ),
+	'utm_campaign' => sanitize_title( $archive_name ),
 	'utm_content'  => 'sidebar'
 ];
 
 // Full URL
-$full_url = add_query_arg($utm_params, $base_url);
+$full_url = add_query_arg( $utm_params, $base_url );
 
-// Current archive term (category/tag/custom taxonomy)
-$qo = get_queried_object();
 
 // Build ACF context key for taxonomy terms: "{$taxonomy}_{$term_id}"
-$acf_key = (isset($qo->taxonomy, $qo->term_id)) ? "{$qo->taxonomy}_{$qo->term_id}" : '';
+$acf_key = (isset($term->taxonomy, $term->term_id)) ? "{$term->taxonomy}_{$term->term_id}" : '';
 
 // Get the selected posts from ACF (may return IDs or post objects)
 $featured = $acf_key ? get_field('featured_category_posts', $acf_key) : [];
@@ -80,15 +94,30 @@ get_header();
 			<div class="container">
 				<div class="image-with-text__inner">
 
-					<div class="image-with-text__inner__image">
-						<?php if (!empty($image) && is_array($image)) : ?>
-							<img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt'] ?: $term->name); ?>">
+					<div class="image-with-text__inner__image" data-aos="fade-left" data-aos-delay="100">
+						<?php if ( ! empty( $image ) && is_array( $image ) ) :
+							$id      = $image['ID'];
+							$alt     = ! empty( $image['alt'] ) ? $image['alt'] : $term->name;
+							$mobile  = wp_get_attachment_image_src( $id, 'medium' ); // ~768px
+							$desktop = wp_get_attachment_image_src( $id, 'full' );   // full size
+							?>
+							<picture>
+								<source media="(max-width: 768px)" srcset="<?php echo esc_url( $mobile[0] ); ?>">
+								<img
+									src="<?php echo esc_url( $desktop[0] ); ?>"
+									alt="<?php echo esc_attr( $alt ); ?>"
+									width="<?php echo esc_attr( $desktop[1] ); ?>"
+									height="<?php echo esc_attr( $desktop[2] ); ?>"
+									loading="lazy"
+									decoding="async"
+								>
+							</picture>
 						<?php else : ?>
-							<img src="<?php echo esc_url(get_template_directory_uri() . '/static/images/category-fallback.png'); ?>" alt="<?php echo esc_html($term->name); ?>" />
+							<img src="<?php echo esc_url( get_template_directory_uri() . '/static/images/category-fallback.png' ); ?>" alt="<?php echo esc_html( $term->name ); ?>" />
 						<?php endif; ?>
 					</div>
 
-					<div class="image-with-text__inner__content">
+					<div class="image-with-text__inner__content" data-aos="fade" data-aos-delay="300">
 						<span class="image-with-text__inner__content__breadcrumb"><img src="<?php echo get_template_directory_uri(); ?>/static/images/left-caret.png"
 								   alt="left caret"><a href="/healthcare-articles/">Back To Health Care Articles</a></span>
 						<h1><?php echo esc_html($term->name); ?></h1>

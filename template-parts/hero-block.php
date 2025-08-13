@@ -7,14 +7,30 @@ $hero_form_shortcode = get_sub_field('form_shortcode');
 <section class="hero-block">
 	<div class="container">
 		<div class="hero-block__inner">
-			<div class="hero-block__inner__left">
+			<div class="hero-block__inner__left" data-aos="fade" data-aos-delay="100">
 				<?php if ($hero_image): ?>
 					<div class="hero-block__inner__left__image">
-						<img src="<?php echo esc_url($hero_image['url']); ?>" alt="<?php echo esc_attr($hero_image['alt']); ?>">
+						<?php
+						$id      = $hero_image['ID'];
+						$alt     = isset($hero_image['alt']) ? $hero_image['alt'] : '';
+						$mobile  = wp_get_attachment_image_src( $id, 'medium' ); // ~768px
+						$desktop = wp_get_attachment_image_src( $id, 'full' );         // full size
+						?>
+						<picture>
+							<source media="(max-width: 768px)" srcset="<?php echo esc_url( $mobile[0] ); ?>">
+							<img
+								src="<?php echo esc_url( $desktop[0] ); ?>"
+								alt="<?php echo esc_attr( $alt ); ?>"
+								width="<?php echo esc_attr( $desktop[1] ); ?>"
+								height="<?php echo esc_attr( $desktop[2] ); ?>"
+								loading="lazy"
+								decoding="async"
+							>
+						</picture>
 					</div>
 				<?php endif; ?>
 			</div>
-			<div class="hero-block__inner__right">
+			<div class="hero-block__inner__right" data-aos="fade-left" data-aos-delay="20">
 				<?php if ($hero_text): ?>
 					<div class="hero-block__inner__right__text">
 						<?php echo $hero_text; ?>

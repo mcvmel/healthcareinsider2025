@@ -6,7 +6,7 @@ $form_shortcode = get_sub_field('form_shortcode');
 
 <section class="insurance-by-state<?php echo $size ? ' insurance-by-state--' . esc_attr($size) : ''; ?>">
     <div class="container">
-        <div class="insurance-by-state__inner">
+        <div class="insurance-by-state__inner" data-aos="fade-up" data-aos-delay="100">
             <?php if ($text): ?>
                 <div class="insurance-by-state__inner__text">
                     <?php echo $text; ?>

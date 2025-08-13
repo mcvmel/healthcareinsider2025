@@ -27,26 +27,30 @@ $logos = get_sub_field('logos'); // This is your gallery field with image IDs
 
     <?php if ($logos): ?>
         <div class="insurer-review__logos">
-            <?php foreach ($logos as $logo):
-                $logo_img = wp_get_attachment_image($logo['ID'], 'full');
+            <?php
+            $count = 1; // start counter at 1
+            foreach ($logos as $logo):
+                $logo_img  = wp_get_attachment_image($logo['ID'], 'full');
                 $logo_link = get_field('url', $logo['ID']); // assumes each image has a custom field "url"
                 ?>
                 <?php if ($logo_link): ?>
-                <div class="white-card">
+                <div class="white-card" data-aos="fade" data-aos-delay="<?php echo $count; ?>00">
                     <a href="<?php echo esc_url($logo_link); ?>" class="insurer-review__logos__logo">
                         <?php echo $logo_img; ?>
                     </a>
                 </div>
-
             <?php else: ?>
-                <div class="white-card">
+                <div class="white-card" data-aos="fade" data-aos-delay="<?php echo $count; ?>00">
                     <div class="insurer-review__logos__logo">
                         <?php echo $logo_img; ?>
                     </div>
                 </div>
-
             <?php endif; ?>
-            <?php endforeach; ?>
+                <?php
+                $count++; // increment counter
+            endforeach;
+            ?>
         </div>
     <?php endif; ?>
+
 </section>

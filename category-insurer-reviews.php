@@ -12,6 +12,73 @@ $q = new WP_Query([
     'order' => 'DESC',
     'paged' => $paged,
 ]);
+
+
+
+
+$term = get_queried_object();
+$image = get_field('category_featured_image', 'category_' . $term->term_id);
+
+
+$base_url = 'https://www.healthcare.com/healthcare-insurance/survey/?utm_source=hci';
+
+// Get slug for utm_medium
+$slug = '';
+if (is_singular()) {
+    $slug = get_post_field('post_name', get_post());
+} elseif (is_category() || is_tag() || is_tax()) {
+    $term = get_queried_object();
+    $slug = $term->slug;
+} elseif (is_post_type_archive()) {
+    $slug = get_post_type();
+} elseif (is_home() || is_front_page()) {
+    $slug = 'home';
+}
+
+// Get archive name for utm_campaign
+$archive_name = '';
+if (is_category() || is_tag() || is_tax()) {
+    $archive_name = $term->name ?? '';
+} elseif (is_post_type_archive()) {
+    $archive_name = post_type_archive_title('', false);
+} elseif (is_home() || is_front_page()) {
+    $archive_name = 'Home';
+} elseif (is_singular()) {
+    $archive_name = get_the_title();
+}
+
+// Build UTM params
+$utm_params = [
+    'utm_medium'   => sanitize_title($slug),
+    'utm_campaign' => sanitize_title($archive_name),
+    'utm_content'  => 'sidebar'
+];
+
+// Full URL
+$full_url = add_query_arg($utm_params, $base_url);
+
+// Current archive term (category/tag/custom taxonomy)
+$qo = get_queried_object();
+
+// Build ACF context key for taxonomy terms: "{$taxonomy}_{$term_id}"
+$acf_key = (isset($qo->taxonomy, $qo->term_id)) ? "{$qo->taxonomy}_{$qo->term_id}" : '';
+
+// Get the selected posts from ACF (may return IDs or post objects)
+$featured = $acf_key ? get_field('featured_category_posts', $acf_key) : [];
+
+// Normalize to an array of post IDs
+$featured_ids = [];
+if (is_array($featured)) {
+    foreach ($featured as $item) {
+        if (is_object($item) && isset($item->ID)) {
+            $featured_ids[] = (int) $item->ID;
+        } elseif (is_numeric($item)) {
+            $featured_ids[] = (int) $item;
+        }
+    }
+}
+// Only show up to 3
+$featured_ids = array_slice(array_unique($featured_ids), 0, 3);
 get_header();
 ?>
 
@@ -21,11 +88,36 @@ get_header();
             <div class="container">
                 <div class="image-with-text__inner">
 
-                    <div class="image-with-text__inner__image">
-                        <img src="/wp-content/uploads/2025/08/compare-plans-compressed.png" alt="Insurer Reviews">
+
+
+                    <div class="image-with-text__inner__image" data-aos="fade-left" data-aos-delay="100">
+                        <?php if ( ! empty( $image ) && is_array( $image ) ) :
+                            $id      = $image['ID'];
+                            $alt     = ! empty( $image['alt'] ) ? $image['alt'] : $term->name;
+                            $mobile  = wp_get_attachment_image_src( $id, 'medium' ); // ~768px
+                            $desktop = wp_get_attachment_image_src( $id, 'full' );   // full size
+                            ?>
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="<?php echo esc_url( $mobile[0] ); ?>">
+                                <img
+                                    src="<?php echo esc_url( $desktop[0] ); ?>"
+                                    alt="<?php echo esc_attr( $alt ); ?>"
+                                    width="<?php echo esc_attr( $desktop[1] ); ?>"
+                                    height="<?php echo esc_attr( $desktop[2] ); ?>"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            </picture>
+                        <?php else : ?>
+                            <img src="<?php echo esc_url( get_template_directory_uri() . '/static/images/category-fallback.png' ); ?>" alt="<?php echo esc_html( $term->name ); ?>" />
+                        <?php endif; ?>
                     </div>
 
-                    <div class="image-with-text__inner__content">
+
+
+
+
+                    <div class="image-with-text__inner__content" data-aos="fade" data-aos-delay="300">
                         <h1><?php echo esc_html($category->name); ?></h1>
                         <p><?php echo category_description($category->term_id); ?></p>
 
@@ -261,6 +353,8 @@ get_header();
                     <li class="state-filter-flyout__states__list__item" data-state="wv">West Virginia</li>
                     <li class="state-filter-flyout__states__list__item" data-state="wi">Wisconsin</li>
                     <li class="state-filter-flyout__states__list__item" data-state="wy">Wyoming</li>
+                    <li class="state-filter-flyout__states__list__item" data-state="pr">Puerto Rico</li>
+                    <li class="state-filter-flyout__states__list__item" data-state="dc">Washington D.C.</li>
                 </ul>
 
             </div>

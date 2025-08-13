@@ -15,10 +15,10 @@ $expert_reviewers = get_users([
     <div class="container">
         <div class="reviewer-grid__inner">
             <?php if ($expert_text) : ?>
-                <div class="reviewer-grid__inner__text"><?php echo $expert_text; ?></div>
+                <div class="reviewer-grid__inner__text" data-aos="fade-up" data-aos-delay="100"><?php echo $expert_text; ?></div>
             <?php endif; ?>
 
-            <div class="reviewer-grid__inner__grid">
+            <div class="reviewer-grid__inner__grid" data-aos="fade" data-aos-delay="300">
                 <?php foreach ($expert_reviewers as $expert_id) : ?>
                     <?php
                     $expert_id      = (int) $expert_id;

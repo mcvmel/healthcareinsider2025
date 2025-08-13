@@ -451,42 +451,6 @@ jQuery( document ).ready( function( $ ) {
 		}
 	});
 
-	var $stateChips = $('.state-filter-flyout__states__list__item');
-	var $cards      = $('.filter-reviews__insurer-reviews__item');
-
-	// optional: define the hide class in CSS: .hide { display: none !important; }
-
-	// Click to toggle state
-	$stateChips.on('click', function() {
-		$(this).toggleClass('active');
-		applyStateFilter();
-	});
-
-	function applyStateFilter() {
-		// Collect active states (lowercase)
-		var activeStates = $stateChips.filter('.active').map(function() {
-			return ($(this).data('state') + '').toLowerCase();
-		}).get();
-
-		// If none active, show all
-		if (activeStates.length === 0) {
-			$cards.removeClass('hide');
-			return;
-		}
-
-		// Otherwise, show only cards that match ANY active state
-		$cards.each(function() {
-			var statesStr = ($(this).attr('data-states') || '').toLowerCase();
-			// split by comma, trim spaces
-			var cardStates = statesStr.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
-
-			// match if any overlap
-			var matches = activeStates.some(function(s) { return cardStates.indexOf(s) !== -1; });
-
-			$(this).toggleClass('hide', !matches);
-		});
-	}
-
 	$('.js-filter-by-state').on('click', function() {
 		$('.state-filter-flyout').addClass('open');
 	});
@@ -515,119 +479,6 @@ jQuery( document ).ready( function( $ ) {
 			.toggleClass('open');                    // toggle the class
 	});
 
-
-	// posts auto fill TOC
-	var $container = $('.single-content__post-content article .entry-content');
-	var $list      = $('.single-content__filter__ul');
-
-	// pick only direct child headings, exclude h3
-	var $heads = $container.children('h1,h2,h4,h5,h6');
-
-	// clear existing items
-	$list.empty();
-
-	// simple slugify
-	function slugify(str){
-		return String(str)
-			.toLowerCase()
-			.replace(/[^a-z0-9]+/g, '-')
-			.replace(/^-+|-+$/g, '');
-	}
-
-	$heads.each(function(i){
-		var $h   = $(this);
-		var text = $.trim($h.text());
-		if (!text) return;
-
-		var id = $h.attr('id');
-		if (!id){
-			id = 'toc-' + (i+1) + '-' + slugify(text);
-			$h.attr('id', id);
-		}
-
-		// build li
-		var $li = $('<li/>', {
-			'data-id': id,
-			text: text
-		});
-
-		$list.append($li);
-	});
-
-	// click -> smooth scroll with 40px offset
-	$list.on('click', 'li', function(){
-		var id = $(this).data('id');
-		var $target = $('#' + id);
-		if (!$target.length) return;
-
-		$('html, body').animate({
-			scrollTop: $target.offset().top - 40
-		}, 300);
-	});
-
-	// init SimpleBar safely on the TOC list
-	var filterEl = document.querySelector('.single-content__filter__ul');
-	if (filterEl && window.SimpleBar) {
-		new SimpleBar(filterEl, { autoHide: false });
-	}
-
-
-	//page auto fill TOC
-	var $containerpage = $('.page-content .page-content__post-content');
-	var $listpage      = $('.page-content__filter__ul');
-
-	// pick only direct child headings, exclude h3
-	var $heads = $containerpage.children('h1,h2,h4,h5,h6');
-
-	// clear existing items
-	$listpage.empty();
-
-	// simple slugify
-	function slugify(str){
-		return String(str)
-			.toLowerCase()
-			.replace(/[^a-z0-9]+/g, '-')
-			.replace(/^-+|-+$/g, '');
-	}
-
-	$heads.each(function(i){
-		var $h   = $(this);
-		var text = $.trim($h.text());
-		if (!text) return;
-
-		var id = $h.attr('id');
-		if (!id){
-			id = 'toc-' + (i+1) + '-' + slugify(text);
-			$h.attr('id', id);
-		}
-
-		// build li
-		var $li = $('<li/>', {
-			'data-id': id,
-			text: text
-		});
-
-		$listpage.append($li);
-	});
-
-	// click -> smooth scroll with 40px offset
-	$listpage.on('click', 'li', function(){
-		var id = $(this).data('id');
-		var $target = $('#' + id);
-		if (!$target.length) return;
-
-		$('html, body').animate({
-			scrollTop: $target.offset().top - 40
-		}, 300);
-	});
-
-	// init SimpleBar safely on the TOC list
-	var filterElPage = document.querySelector('.page-content__filter__ul');
-	if (filterElPage && window.SimpleBar) {
-		new SimpleBar(filterElPage, { autoHide: false });
-	}
-
-
 	$('.js-open-search').on('click', function(e) {
 		e.preventDefault();
 		$('.search-overlay').addClass('show');
@@ -649,55 +500,6 @@ jQuery( document ).ready( function( $ ) {
 		$('.site-header__main__nav').removeClass('open');
 	});
 
-
-
-	var $menu      = $('#HealthGuideFilterUl');
-	var $content   = $('.single-content__post-content');
-	var $headings  = $content.find('.guide-section .guide-section__heading');
-	var scrollOffs = 80; // adjust for sticky header height
-
-	if (!$menu.length || !$headings.length) return;
-
-	$menu.empty();
-
-	$headings.each(function (i) {
-		var $wrap  = $(this);
-		var $hx    = $wrap.find('h1,h2,h3,h4,h5,h6').first();
-		var label  = $.trim(($hx.length ? $hx.text() : $wrap.text()).replace(/\s+/g, ' '));
-		if (!label) label = 'Section ' + (i + 1);
-
-		var id = $wrap.attr('id');
-		if (!id) {
-			id = 'hg-sec-' + (i + 1);
-			$wrap.attr('id', id);
-		}
-
-		$('<li/>')
-			.attr('data-hf-target', '#' + id)
-			.text(label)
-			.appendTo($menu);
-	});
-
-	$menu.on('click', 'li', function () {
-		var sel     = $(this).attr('data-hf-target');
-		var $target = $(sel);
-		if (!$target.length) return;
-
-		$('html, body').animate({ scrollTop: $target.offset().top - scrollOffs }, 400, function () {
-			$target.closest('.guide-section')
-				.find('.js-open-guide-section')
-				.first()
-				.trigger('click');
-		});
-	});
-
-
-	var filterElHealthcareGuide = document.getElementById('HealthGuideFilterUl');
-	if (filterElHealthcareGuide && window.SimpleBar) {
-		new SimpleBar(filterElHealthcareGuide, { autoHide: false });
-	}
-
-
 	//aos init
 	AOS.init({
 		offset: 200,
@@ -707,3 +509,164 @@ jQuery( document ).ready( function( $ ) {
 	});
 
 });
+
+
+(function ($) {
+	function runBlock() {
+
+		// === STATE FILTER ===
+		var $stateChips = $('.state-filter-flyout__states__list__item');
+		var $cards      = $('.filter-reviews__insurer-reviews__item');
+
+		$stateChips.on('click', function() {
+			$(this).toggleClass('active');
+			applyStateFilter();
+		});
+
+		function applyStateFilter() {
+			var activeStates = $stateChips.filter('.active').map(function() {
+				return ($(this).data('state') + '').toLowerCase();
+			}).get();
+
+			if (activeStates.length === 0) {
+				$cards.removeClass('hide');
+				return;
+			}
+
+			$cards.each(function() {
+				var statesStr  = ($(this).attr('data-states') || '').toLowerCase();
+				var cardStates = statesStr.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+				var matches    = activeStates.some(function(s) { return cardStates.indexOf(s) !== -1; });
+				$(this).toggleClass('hide', !matches);
+			});
+		}
+
+		// === POSTS AUTO FILL TOC ===
+		var $container = $('.single-content__post-content article .entry-content');
+		var $list      = $('.single-content__filter__ul');
+		var $heads     = $container.children('h1,h2,h4,h5,h6');
+
+		$list.empty();
+
+		function slugify(str){
+			return String(str)
+				.toLowerCase()
+				.replace(/[^a-z0-9]+/g, '-')
+				.replace(/^-+|-+$/g, '');
+		}
+
+		$heads.each(function(i){
+			var $h   = $(this);
+			var text = $.trim($h.text());
+			if (!text) return;
+
+			var id = $h.attr('id');
+			if (!id){
+				id = 'toc-' + (i+1) + '-' + slugify(text);
+				$h.attr('id', id);
+			}
+
+			$('<li/>', { 'data-id': id, text: text }).appendTo($list);
+		});
+
+		$list.on('click', 'li', function(){
+			var id = $(this).data('id');
+			var $target = $('#' + id);
+			if (!$target.length) return;
+			$('html, body').animate({ scrollTop: $target.offset().top - 40 }, 300);
+		});
+
+		var filterEl = document.querySelector('.single-content__filter__ul');
+		if (filterEl && window.SimpleBar) {
+			new SimpleBar(filterEl, { autoHide: false });
+		}
+
+		// === PAGE AUTO FILL TOC ===
+		var $containerpage = $('.page-content .page-content__post-content');
+		var $listpage      = $('.page-content__filter__ul');
+		var $heads2        = $containerpage.children('h1,h2,h4,h5,h6');
+
+		$listpage.empty();
+
+		// reuse slugify
+
+		$heads2.each(function(i){
+			var $h   = $(this);
+			var text = $.trim($h.text());
+			if (!text) return;
+
+			var id = $h.attr('id');
+			if (!id){
+				id = 'toc-' + (i+1) + '-' + slugify(text);
+				$h.attr('id', id);
+			}
+
+			$('<li/>', { 'data-id': id, text: text }).appendTo($listpage);
+		});
+
+		$listpage.on('click', 'li', function(){
+			var id = $(this).data('id');
+			var $target = $('#' + id);
+			if (!$target.length) return;
+			$('html, body').animate({ scrollTop: $target.offset().top - 40 }, 300);
+		});
+
+		var filterElPage = document.querySelector('.page-content__filter__ul');
+		if (filterElPage && window.SimpleBar) {
+			new SimpleBar(filterElPage, { autoHide: false });
+		}
+
+		// === HEALTH GUIDE MENU ===
+		var $menu      = $('#HealthGuideFilterUl');
+		var $content   = $('.single-content__post-content');
+		var $headings  = $content.find('.guide-section .guide-section__heading');
+		var scrollOffs = 80;
+
+		if ($menu.length && $headings.length) {
+			$menu.empty();
+
+			$headings.each(function (i) {
+				var $wrap  = $(this);
+				var $hx    = $wrap.find('h1,h2,h3,h4,h5,h6').first();
+				var label  = $.trim(($hx.length ? $hx.text() : $wrap.text()).replace(/\s+/g, ' '));
+				if (!label) label = 'Section ' + (i + 1);
+
+				var id = $wrap.attr('id');
+				if (!id) {
+					id = 'hg-sec-' + (i + 1);
+					$wrap.attr('id', id);
+				}
+
+				$('<li/>').attr('data-hf-target', '#' + id).text(label).appendTo($menu);
+			});
+
+			$menu.on('click', 'li', function () {
+				var sel     = $(this).attr('data-hf-target');
+				var $target = $(sel);
+				if (!$target.length) return;
+
+				$('html, body').animate({ scrollTop: $target.offset().top - scrollOffs }, 400, function () {
+					$target.closest('.guide-section')
+						.find('.js-open-guide-section')
+						.first()
+						.trigger('click');
+				});
+			});
+
+			var filterElHealthcareGuide = document.getElementById('HealthGuideFilterUl');
+			if (filterElHealthcareGuide && window.SimpleBar) {
+				new SimpleBar(filterElHealthcareGuide, { autoHide: false });
+			}
+		}
+
+		// done
+	}
+
+	// Run after everything; if 'load' already fired, run now.
+	if (document.readyState === 'complete') {
+		// queue to end of current stack so anything just scheduled still runs first
+		setTimeout(runBlock, 0);
+	} else {
+		$(window).on('load', function () { setTimeout(runBlock, 0); });
+	}
+})(jQuery);

@@ -17,6 +17,8 @@ $phone_number = get_field('footer_options_phone_number', 'option');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
 
+    <link rel="preload" as="image" href="/wp-content/themes/healthcareinsider2025/static/images/ice-white-swoop.png" fetchpriority="high">
+
     <?php wp_head(); ?>
 </head>
 
@@ -57,13 +59,13 @@ $phone_number = get_field('footer_options_phone_number', 'option');
                     </a>
                 </div>
 
-                <button class="site-header__main__burger js-open-mobile-menu">
+                <button class="site-header__main__burger js-open-mobile-menu" aria-label="Open mobile menu">
                     <img src="<?php echo get_template_directory_uri(); ?>/static/images/icon-menu.png"
                          alt="Open mobile menu">
                 </button>
 
                 <nav class="site-header__main__nav" role="navigation">
-                    <button class="site-header__main__nav__button js-close-mobile-menu"></button>
+                    <button class="site-header__main__nav__button js-close-mobile-menu" aria-label="Close mobile menu"></button>
                     <?php
                     wp_nav_menu([
                         'theme_location' => 'primary',

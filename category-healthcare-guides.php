@@ -10,7 +10,7 @@ $term = get_queried_object();
 $image = get_field('category_featured_image', 'category_' . $term->term_id);
 
 
-$base_url = 'https://www.healthcare.com/mp2/healthcare-insurance/survey/?utm_source=hci';
+$base_url = 'https://www.healthcare.com/healthcare-insurance/survey/?utm_source=hci';
 
 // Get slug for utm_medium
 $slug = '';
@@ -80,15 +80,30 @@ get_header();
 			<div class="container">
 				<div class="image-with-text__inner">
 
-					<div class="image-with-text__inner__image">
-						<?php if (!empty($image) && is_array($image)) : ?>
-							<img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt'] ?: $term->name); ?>">
+					<div class="image-with-text__inner__image" data-aos="fade-left" data-aos-delay="100">
+						<?php if ( ! empty( $image ) && is_array( $image ) ) :
+							$id      = $image['ID'];
+							$alt     = ! empty( $image['alt'] ) ? $image['alt'] : $term->name;
+							$mobile  = wp_get_attachment_image_src( $id, 'medium' ); // ~768px
+							$desktop = wp_get_attachment_image_src( $id, 'full' );   // full size
+							?>
+							<picture>
+								<source media="(max-width: 768px)" srcset="<?php echo esc_url( $mobile[0] ); ?>">
+								<img
+									src="<?php echo esc_url( $desktop[0] ); ?>"
+									alt="<?php echo esc_attr( $alt ); ?>"
+									width="<?php echo esc_attr( $desktop[1] ); ?>"
+									height="<?php echo esc_attr( $desktop[2] ); ?>"
+									loading="lazy"
+									decoding="async"
+								>
+							</picture>
 						<?php else : ?>
-							<img src="<?php echo esc_url(get_template_directory_uri() . '/static/images/category-fallback.png'); ?>" alt="<?php echo esc_html($term->name); ?>" />
+							<img src="<?php echo esc_url( get_template_directory_uri() . '/static/images/category-fallback.png' ); ?>" alt="<?php echo esc_html( $term->name ); ?>" />
 						<?php endif; ?>
 					</div>
 
-					<div class="image-with-text__inner__content">
+					<div class="image-with-text__inner__content" data-aos="fade" data-aos-delay="300">
 						<h1><?php echo esc_html($term->name); ?></h1>
 						<?php if (!empty($term->description)) : ?>
 							<?php echo wp_kses_post(wpautop($term->description)); ?>

@@ -16,56 +16,46 @@ get_header();
             // Loop through rows.
             while (have_rows('page_builder')) : the_row();
 
-                // Case: Homepage Hero
+
                 if (get_row_layout() == 'hero_block'):
                     get_template_part('template-parts/hero-block');
 
-                // Case: Intro Section
+
                 elseif (get_row_layout() == 'categories_grid'):
                     get_template_part('template-parts/categories-grid');
 
-                // Case: Grid Column
+
                 elseif (get_row_layout() == 'social_proof_logos'):
                     get_template_part('template-parts/social-proof-logos');
 
-                // Case: Half Half Section
                 elseif (get_row_layout() == 'insurer_review_web'):
                     get_template_part('template-parts/insurer-review-web');
 
-                // Case: Location
                 elseif (get_row_layout() == 'insurance_by_state'):
                     get_template_part('template-parts/insurance-by-state');
 
-                // Case: CTA Block
                 elseif (get_row_layout() == 'latest_posts'):
                     get_template_part('template-parts/latest-posts');
 
-                // Case: CTA Block
                 elseif (get_row_layout() == 'image_with_text'):
                     get_template_part('template-parts/image-with-text');
 
-                // Case: Testimonials
                 elseif (get_row_layout() == 'author_callout'):
                     get_template_part('template-parts/author-callout');
 
-                // Case: Health Insurance State Directory
                 elseif (get_row_layout() == 'health_insurance_state_directory'):
                     get_template_part('template-parts/health-insurance-state-directory');
 
-                // Case: Health Insurance State Directory
                 elseif (get_row_layout() == 'values'):
                     get_template_part('template-parts/values');
 
-                // Case: Health Insurance State Directory
                 elseif (get_row_layout() == 'author_grid'):
                     get_template_part('template-parts/author-grid');
 
-                // Case: Health Insurance State Directory
                 elseif (get_row_layout() == 'reviewer_grid'):
                     get_template_part('template-parts/reviewer-grid');
 
 
-                // Case: Health Insurance State Directory
                 elseif (get_row_layout() == 'simple_cta'):
                     get_template_part('template-parts/simple-cta');
 

@@ -37,11 +37,11 @@ $cats_selected = get_sub_field('categories'); // array of term IDs
 							$icon_url = $icon_raw;
 						}
 						?>
-						<li class="categories-grid__inner__list__item white-card">
+						<li class="categories-grid__inner__list__item white-card" data-aos="fade-up" data-aos-delay="10">
 							<a href="<?php echo esc_url(get_term_link($cat_term)); ?>">
                             <span class="categories-grid__inner__list__item__icon">
                                 <?php if (!empty($icon_url)) : ?>
-									<img src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($icon_alt); ?>" />
+									<img src="<?php echo esc_url($icon_url); ?>" alt="Icon showing the <?php echo esc_attr($icon_alt); ?> category" />
 								<?php endif; ?>
                             </span>
 								<span class="categories-grid__inner__list__item__name">

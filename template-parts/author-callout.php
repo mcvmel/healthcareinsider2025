@@ -14,7 +14,7 @@ $link_target = isset($link['target']) ? $link['target'] : '_self';
     <div class="container">
         <div class="author-callout__inner">
             <?php if ($text) : ?>
-                <div class="author-callout__inner__text">
+                <div class="author-callout__inner__text" data-aos="fade" data-aos-delay="100">
                     <?php echo $text; ?>
                     <?php if ($link_url && $link_title) : ?>
                         <div class="btn-container">
@@ -28,8 +28,9 @@ $link_target = isset($link['target']) ? $link['target'] : '_self';
 
             <?php if (!empty($authors)) : ?>
                 <div class="author-callout__inner__grid">
-                    <?php foreach ($authors as $author) : ?>
-                        <?php
+                    <?php
+                    $count = 3;
+                    foreach ($authors as $author) :
                         // Handle both return formats: User ID or User Array
                         $user_id = (int) (is_array($author) && isset($author['ID']) ? $author['ID'] : $author);
 
@@ -63,7 +64,7 @@ $link_target = isset($link['target']) ? $link['target'] : '_self';
                             $photo_alt      = $display_name;
                         }
                         ?>
-                        <div class="author-callout__inner__grid__author">
+                        <div class="author-callout__inner__grid__author" data-aos="fade-up" data-aos-delay="<?php echo $count; ?>00">
                             <div class="author-callout__inner__grid__author__image">
                                 <img src="<?php echo esc_url($photo_url); ?>" alt="<?php echo esc_attr($photo_alt); ?>" />
                             </div>
@@ -76,7 +77,9 @@ $link_target = isset($link['target']) ? $link['target'] : '_self';
                                 <?php endif; ?>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+                    <?php
+                        $count++;
+                    endforeach; ?>
                 </div>
             <?php endif; ?>
         </div>

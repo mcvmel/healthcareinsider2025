@@ -12,7 +12,7 @@ $legal_links         = get_field('footer_options_legal_links', 'option');
 $legal_disclaimer   = get_field('footer_options_disclaimer', 'option');
 ?>
 
-<section class="email-cta">
+<section class="email-cta" data-aos="fade-up" data-aos-delay="100">
     <div class="container">
         <section class="email-cta__inner">
             <div class="email-cta__inner__left">

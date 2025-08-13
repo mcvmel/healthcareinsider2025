@@ -223,38 +223,58 @@ add_action( 'wp_enqueue_scripts', 'healthcareinsider2025_scripts' );
 
 // Add Shortcode
 function find_plans_cta_shortcode($atts) {
-    global $post;
+	global $post;
 
-    // Default values
-    $defaults = array(
-        'headline'  => 'Searching For Health Plans?',
-        'paragraph' => 'Explore ACA Marketplace or Short-Term Medical Health Plans',
-        'content'   => 'default'
-    );
+// Default values
+	$defaults = array(
+		'headline'  => 'Searching For Health Plans?',
+		'paragraph' => 'Explore ACA Marketplace or Short-Term Medical Health Plans',
+		'content'   => 'default'
+	);
 
-    // Merge defaults with attributes
-    $atts = shortcode_atts($defaults, $atts, 'find_plans_cta');
+// Merge defaults with attributes
+	$atts = shortcode_atts($defaults, $atts, 'find_plans_cta');
 
-    // Get current page slug
-    $page_slug = $post ? $post->post_name : '';
+// --- Build utm_medium: first 4 words from current page URL + "-<ID>" ---
+	$page_id = $post ? (int) $post->ID : 0;
 
-    // Get first category slug (or empty if none)
-    $category_slug = '';
-    $categories = get_the_category($post->ID);
-    if (!empty($categories) && !is_wp_error($categories)) {
-        $category_slug = $categories[0]->slug;
-    }
+// Get the permalink path and take the last segment (slug-ish)
+	$permalink = $post ? get_permalink($post) : '';
+	$path      = $permalink ? trim(parse_url($permalink, PHP_URL_PATH), '/') : '';
+	$segment   = $path ? basename($path) : ($post ? $post->post_name : '');
 
-    // Build URL
-    $cta_url = 'https://www.healthcare.com/mp2/healthcare-insurance/survey/?utm_source=hci';
-    $cta_url .= '&utm_medium=' . urlencode($page_slug);
-    $cta_url .= '&utm_campaign=' . urlencode($category_slug);
-    $cta_url .= '&utm_content=' . urlencode($atts['content']);
+// Extract "words" from the segment (letters/numbers only), take first 4
+	$words          = preg_split('/[^a-z0-9]+/i', (string) $segment, -1, PREG_SPLIT_NO_EMPTY);
+	$first_four     = array_slice($words, 0, 4);
+	$utm_medium_base= strtolower(implode('-', $first_four));
 
-    // Output HTML
-    ob_start();
-    ?>
-    <div class="find-plans-cta">
+// Sensible fallback if empty
+	if ($utm_medium_base === '') {
+		$utm_medium_base = $post && !empty($post->post_name) ? sanitize_title($post->post_name) : 'page';
+	}
+
+	$utm_medium = $utm_medium_base . '-' . $page_id; // ID is numeric
+
+// Get first category slug (or empty if none)
+	$category_slug = '';
+	if ($post) {
+		$categories = get_the_category($post->ID);
+		if (!empty($categories) && !is_wp_error($categories)) {
+			$category_slug = $categories[0]->slug;
+		}
+	}
+
+// Build URL
+	$cta_url  = 'https://www.healthcare.com/healthcare-insurance/survey/?utm_source=hci';
+	$cta_url .= '&utm_medium='  . urlencode($utm_medium);
+	$cta_url .= '&utm_campaign=' . urlencode($category_slug);
+	$cta_url .= '&utm_content='  . urlencode($atts['content']);
+
+// Output HTML
+	ob_start();
+
+	?>
+    <div class="find-plans-cta" data-aos="fade-up">
 		<div class="find-plans-cta__inner">
 			<span class="find-plans-cta__inner__heading"><?php echo esc_html($atts['headline']); ?></span>
 			<p><?php echo esc_html($atts['paragraph']); ?></p>
@@ -298,7 +318,7 @@ function call_today_cta_shortcode($atts) {
 	// Output HTML
 	ob_start();
 	?>
-	<div class="call-today-cta">
+	<div class="call-today-cta" data-aos="fade-up">
 		<div class="call-today-cta__inner">
 			<span class="call-today-cta__inner__heading"><?php echo esc_html($atts['headline']); ?></span>
 			<p><?php echo esc_html($atts['paragraph']); ?></p>

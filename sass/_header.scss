@@ -84,7 +84,7 @@
     display: block;
     max-width: 300px;
     width: auto;
-    transition: padding $transition-time ease;
+    transition: max-width $transition-time ease;
     @media (max-width: $mobile) {
       max-width: 220px;
     }

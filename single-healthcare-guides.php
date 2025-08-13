@@ -28,7 +28,7 @@ get_header();
 
         <section class="single-hero single-hero--search-results">
             <div class="container">
-                <div class="single-hero__inner">
+                <div class="single-hero__inner" data-aos="fade">
                     <div class="single-hero__inner__bread-crumbs">
                         <img src="<?php echo get_template_directory_uri(); ?>/static/images/left-caret.png"
                              alt="left caret"><a href="/category/healthcare-guides/">Back To Healthcare Guides</a>

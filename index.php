@@ -5,17 +5,43 @@
  */
 
 // --- UTM for blog index ---
-$idx_base_url = 'https://www.healthcare.com/mp2/healthcare-insurance/survey/?utm_source=hci';
+$idx_base_url = 'https://www.healthcare.com/healthcare-insurance/survey/?utm_source=hci';
 
-// We’re on the blog index; treat slug as "blog" (or "home" if it's the front page)
-$idx_slug      = is_front_page() ? 'home' : 'blog';
-$idx_campaign  = 'all-categories';
-$idx_utm_params = [
-	'utm_medium'   => sanitize_title($idx_slug),
-	'utm_campaign' => sanitize_title($idx_campaign),
+// Determine the relevant page ID (front page or posts page on blog index)
+if ( is_front_page() ) {
+	$idx_page_id = (int) get_option( 'page_on_front' );
+} elseif ( is_home() ) {
+	$idx_page_id = (int) get_option( 'page_for_posts' );
+} else {
+	$idx_page_id = 0;
+}
+
+// Current path + last segment (works on blog index/home too)
+$req_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/';
+$path    = trim( wp_parse_url( home_url( $req_uri ), PHP_URL_PATH ), '/' );
+$segment = $path ? basename( $path ) : ( is_front_page() ? 'home' : 'blog' );
+
+// First four “words” from the segment
+$words      = preg_split( '/[^a-z0-9]+/i', (string) $segment, -1, PREG_SPLIT_NO_EMPTY );
+$first_four = array_slice( $words, 0, 4 );
+$base_slug  = strtolower( implode( '-', $first_four ) );
+
+// Fallback if empty
+if ( $base_slug === '' ) {
+	$base_slug = is_front_page() ? 'home' : 'blog';
+}
+
+$idx_utm_medium = $base_slug . '-' . $idx_page_id;
+
+// Campaign & content
+$idx_campaign   = 'all-categories';
+$idx_utm_params = array(
+	'utm_medium'   => $idx_utm_medium,
+	'utm_campaign' => sanitize_title( $idx_campaign ),
 	'utm_content'  => 'sidebar',
-];
-$idx_full_url = add_query_arg($idx_utm_params, $idx_base_url);
+);
+
+$idx_full_url = add_query_arg( $idx_utm_params, $idx_base_url );
 
 get_header();
 ?>
@@ -27,13 +53,13 @@ get_header();
 		<div class="container">
 			<div class="image-with-text__inner">
 
-				<div class="image-with-text__inner__image">
+				<div class="image-with-text__inner__image" data-aos="fade-left" data-aos-delay="100">
 					<img
 						src="<?php echo esc_url(get_template_directory_uri() . '/static/images/category-fallback.png'); ?>"
 						alt="Health Care Articles" />
 				</div>
 
-				<div class="image-with-text__inner__content">
+				<div class="image-with-text__inner__content" data-aos="fade" data-aos-delay="300">
 					<h1>Healthcare Articles</h1>
 					<p>Browse our latest articles and explore categories below.</p>
 				</div>
