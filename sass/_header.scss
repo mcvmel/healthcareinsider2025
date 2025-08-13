@@ -1,12 +1,17 @@
 .site-header {
   width: 100%;
   z-index: 5;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0);
+  transition: box-shadow $transition-time ease;
 
   // Utility bar
   &__utility {
     background-color: $deep-blue;
     padding: 0.75rem 0;
+    transition: padding $transition-time ease;
   }
 
   &__utility__inner {
@@ -64,6 +69,7 @@
 
   // Main nav row
   &__main {
+    transition: padding $transition-time ease;
     background-color: $white;
     padding: 1.5rem 0;
   }
@@ -78,6 +84,7 @@
     display: block;
     max-width: 300px;
     width: auto;
+    transition: padding $transition-time ease;
     @media (max-width: $mobile) {
       max-width: 220px;
     }
@@ -428,5 +435,17 @@
     }
   }
 
+  &--shrink {
+    box-shadow: $box-shadow;
 
+    .site-header__utility {
+      padding: 4px 0;
+    }
+    .site-header__main {
+      padding: 4px 0;
+    }
+    .site-header__main__logo img {
+      max-width: 220px;
+    }
+  }
 }

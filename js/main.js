@@ -358,11 +358,9 @@ jQuery( document ).ready( function( $ ) {
 		var scroll = $(window).scrollTop();
 
 		if (scroll >= 80) {
-			$('.utility').addClass('utility--shrink');
-			$('.header').addClass('header--shrink');
+			$('.site-header').addClass('site-header--shrink');
 		} else {
-			$('.utility').removeClass('utility--shrink');
-			$('.header').removeClass('header--shrink');
+			$('.site-header').removeClass('site-header--shrink');
 		}
 
 

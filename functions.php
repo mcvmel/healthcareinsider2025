@@ -163,6 +163,26 @@ function custom_trim_excerpt_by_chars($excerpt) {
 }
 add_filter('get_the_excerpt', 'custom_trim_excerpt_by_chars');
 
+
+// admin styles
+function healthcareinsider2025_admin_styles()
+{
+	wp_enqueue_style('healthcareinsider2025-admin-styles', get_template_directory_uri() . '/admin.css', array(), HCI_VERSION);
+}
+
+add_action('admin_enqueue_scripts', 'healthcareinsider2025_admin_styles');
+
+// login styles
+function healthcareinsider2025_login_styles()
+{
+	wp_enqueue_style('healthcareinsider2025-login-styles', get_template_directory_uri() . '/login.css', array(), HCI_VERSION);
+}
+
+add_action('login_enqueue_scripts', 'healthcareinsider2025_login_styles');
+
+
+
+
 /**
  * Enqueue scripts and styles.
  */
