@@ -135,7 +135,7 @@ get_header();
                             <span><?php echo $state_name; ?></span>
 
                         <?php else: ?>
-                            <a href="/healthcare-articles/">Health Care Articles</a>
+                            <a href="/healthcare-articles/">Healthcare Articles</a>
                             <img src="<?php echo get_template_directory_uri(); ?>/static/images/right-caret.png"
                                  alt="right caret">
                             <?php if ( ! empty( $categories ) ) {

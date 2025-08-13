@@ -66,7 +66,7 @@ $authors = get_users([
                             <?php if (!empty($headline)) : ?>
                                 <p><?php echo esc_html($headline); ?></p>
                             <?php else : ?>
-                                <p>Health Care Writer</p>
+                                <p>Healthcare Writer</p>
                             <?php endif; ?>
                         </div>
                     </div>

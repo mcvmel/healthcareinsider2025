@@ -73,7 +73,7 @@ $link_target = isset($link['target']) ? $link['target'] : '_self';
                                 <?php if (!empty($headline)) : ?>
                                     <p><?php echo esc_html($headline); ?></p>
                                 <?php else : ?>
-                                    <p>Health Care Writer</p>
+                                    <p>Healthcare Writer</p>
                                 <?php endif; ?>
                             </div>
                         </div>

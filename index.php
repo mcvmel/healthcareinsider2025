@@ -56,7 +56,7 @@ get_header();
 				<div class="image-with-text__inner__image" data-aos="fade-left" data-aos-delay="100">
 					<img
 						src="<?php echo esc_url(get_template_directory_uri() . '/static/images/category-fallback.png'); ?>"
-						alt="Health Care Articles" />
+						alt="Healthcare Articles" />
 				</div>
 
 				<div class="image-with-text__inner__content" data-aos="fade" data-aos-delay="300">
