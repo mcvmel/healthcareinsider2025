@@ -52,6 +52,16 @@
         @media (max-width: $mobile) {
           font-size: 1rem;
         }
+        a {
+          font-size: 1.125rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 100%; /* 1.125rem */
+          letter-spacing: -0.01125rem;
+          font-family: $primary-font;
+          color: $sky-blue;
+
+        }
       }
     }
 

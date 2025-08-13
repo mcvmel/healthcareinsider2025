@@ -135,16 +135,17 @@ get_header();
                             <span><?php echo $state_name; ?></span>
 
                         <?php else: ?>
-                            <a href="">Health Care Articles</a>
+                            <a href="/healthcare-articles/">Health Care Articles</a>
                             <img src="<?php echo get_template_directory_uri(); ?>/static/images/right-caret.png"
                                  alt="right caret">
-                            <?php if (!empty($categories)) {
+                            <?php if ( ! empty( $categories ) ) {
                                 $category = $categories[0]; // Get first category
-                                echo '<span>'
-                                    . esc_html($category->name) .
-                                    '</span>';
-                            }
-                            ?>
+                                $category_link = get_category_link( $category->term_id );
+
+                                if ( ! is_wp_error( $category_link ) ) {
+                                    echo '<span><a href="' . esc_url( $category_link ) . '">' . esc_html( $category->name ) . '</a></span>';
+                                }
+                            } ?>
 
                         <?php endif; ?>
 
